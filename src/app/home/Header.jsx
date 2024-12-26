@@ -1,15 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import image from "../../../public/passport.png";
+import image from "../../../public/passport1.jpg";
 
 const Header = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-black via-purple-800 to-purple-900 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-tr from-black via-black to-purple-900 overflow-hidden">
       {/* Animated background blobs */}
       <div className="absolute inset-0">
-        <div className="absolute w-72 md:w-96 h-72 md:h-96 bg-gradient-to-tr from-red-700 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob top-0 left-20 transform-gpu" />
-        <div className="absolute w-72 md:w-96 h-72 md:h-96 bg-gradient-to-tr from-red-700 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob motion-safe:delay-2000 top-40 right-20 transform-gpu" />
-        <div className="absolute w-72 md:w-96 h-72 md:h-96 bg-gradient-to-tr from-red-700 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob motion-safe:delay-4000 bottom-20 left-1/2 transform-gpu" />
+        <div className="absolute w-72 md:w-60 h-60 md:h-60 bg-gradient-to-tr from-purple-700 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob top-0 left-20 transform-gpu" />
+        <div className="absolute w-72 md:w-60 h-72 md:h-60 bg-gradient-to-tr from-purple-700 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob motion-safe:delay-2000 top-40 right-20 transform-gpu" />
+        <div className="absolute w-72 md:w-60 h-72 md:h-60 bg-gradient-to-tr from-purple-700 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob motion-safe:delay-4000 bottom-20 left-1/2 transform-gpu" />
       </div>
 
       {/* Content */}
@@ -21,10 +21,10 @@ const Header = () => {
               I'm SreeValsan Ravikumar
             </h2>
             <div className="space-y-2 bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent">
-              <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300 ">
+              <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300 ">
                 Web Designing &
               </h1>
-              <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300">
+              <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300">
                 UX Designer
               </h1>
             </div>
@@ -71,12 +71,12 @@ const Header = () => {
 
           {/* Photo column - moves to top on mobile */}
           <div className="order-1 lg:order-2">
-            <div className="bg-gray-200 aspect-square rounded-lg flex items-center justify-center max-w-md mx-auto">
+            <div className=" aspect-square rounded-lg flex items-center justify-center max-w-md mx-auto">
               <Image
                 src={image}
                 alt="Profile"
-                width={400}
-                height={400}
+                width={300}
+                height={300}
                 className="rounded-lg"
               />
             </div>

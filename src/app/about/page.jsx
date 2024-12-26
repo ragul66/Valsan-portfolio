@@ -4,16 +4,21 @@ import Navbar from "../components/Navbar";
 const ServiceCard = ({ number, title, description }) => {
   return (
     <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-900/10 to-purple-800/10 p-1 transition-all duration-300 hover:from-purple-900/20 hover:to-purple-800/20">
-      <div className="relative flex items-center justify-between rounded-xl bg-black/90 p-6 lg:p-8">
-        <div className="space-y-3">
-          <span className="text-purple-400 text-lg font-medium">{number}</span>
+      <div className="relative flex items-center rounded-xl bg-black/90 p-6 lg:p-8">
+        {/* Number Section */}
+        <span className="text-purple-400 text-lg font-medium flex-shrink-0 pr-6">
+          {number}
+        </span>
+
+        {/* Content Section */}
+        <div className="space-y-2 flex-1">
           <h3 className="text-xl lg:text-2xl text-white font-medium">
             {title}
           </h3>
-          <p className="text-gray-400 text-sm md:text-base max-w-lg">
-            {description}
-          </p>
+          <p className="text-gray-400 text-sm md:text-base">{description}</p>
         </div>
+
+        {/* Arrow Section */}
         <div className="hidden md:flex items-center justify-center">
           <svg
             className="w-6 h-6 text-purple-400 transform group-hover:translate-x-1 transition-transform duration-300"
