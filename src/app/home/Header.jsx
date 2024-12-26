@@ -1,13 +1,15 @@
 import React from "react";
+import Image from "next/image";
+import image from "../../../public/passport.png";
 
 const Header = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-tr from-black via-purple-800 to-purple-900 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-black via-purple-800 to-purple-900 overflow-hidden">
       {/* Animated background blobs */}
       <div className="absolute inset-0">
         <div className="absolute w-72 md:w-96 h-72 md:h-96 bg-gradient-to-tr from-violet-600 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob top-0 left-20 transform-gpu" />
-        <div className="absolute w-72 md:w-96 h-72 md:h-96 bg-violet-600 rounded-full blur-3xl motion-safe:animate-blob motion-safe:delay-2000 top-40 right-20 transform-gpu" />
-        <div className="absolute w-72 md:w-96 h-72 md:h-96 bg-violet-600 rounded-full blur-3xl motion-safe:animate-blob motion-safe:delay-4000 bottom-20 left-1/2 transform-gpu" />
+        <div className="absolute w-72 md:w-96 h-72 md:h-96 bg-gradient-to-tr from-violet-600 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob motion-safe:delay-2000 top-40 right-20 transform-gpu" />
+        <div className="absolute w-72 md:w-96 h-72 md:h-96 bg-gradient-to-tr from-violet-600 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob motion-safe:delay-4000 bottom-20 left-1/2 transform-gpu" />
       </div>
 
       {/* Content */}
@@ -70,7 +72,13 @@ const Header = () => {
           {/* Photo column - moves to top on mobile */}
           <div className="order-1 lg:order-2">
             <div className="bg-gray-200 aspect-square rounded-lg flex items-center justify-center max-w-md mx-auto">
-              <p className="text-xl md:text-2xl text-gray-600">My Photo</p>
+              <Image
+                src={image}
+                alt="Profile"
+                width={400}
+                height={400}
+                className="rounded-lg"
+              />
             </div>
           </div>
         </div>
