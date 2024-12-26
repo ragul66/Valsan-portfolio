@@ -20,8 +20,8 @@ const Header = () => {
             <h2 className="text-xl md:text-2xl text-white font-medium">
               I'm SreeValsan Ravikumar
             </h2>
-            <div className="space-y-2">
-              <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-white">
+            <div className="space-y-2 bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300 ">
                 Web Designing &
               </h1>
               <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300">
