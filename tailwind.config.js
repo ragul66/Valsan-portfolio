@@ -14,7 +14,7 @@ export default {
         foreground: "#800080",
       },
       animation: {
-        blob: "blob 7s infinite",
+        blob: "blob 10s infinite",
       },
       keyframes: {
         blob: {
