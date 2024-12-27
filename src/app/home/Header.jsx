@@ -17,7 +17,7 @@ const Header = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content column - moves to bottom on mobile */}
           <div className="order-2 lg:order-1 space-y-6 md:space-y-8">
-            <h2 className="text-xl md:text-2xl text-white font-medium">
+            <h2 className="text-xl md:text-3xl text-white font-medium animate-fadein">
               I'm SreeValsan Ravikumar
             </h2>
             <div className="space-y-2 bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent">
@@ -41,7 +41,7 @@ const Header = () => {
                 Resume
               </button>
               <a
-                href="#"
+                href="https://www.instagram.com/sree_valsan___/"
                 className="text-white hover:text-white hover:bg-instagram transition-colors border-2 p-2 rounded-full"
                 aria-label="Instagram"
               >
