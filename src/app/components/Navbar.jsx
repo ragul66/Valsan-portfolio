@@ -1,14 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation"; // New hook for `app/` directory
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // Get the current path
 
   const menuItems = [
     { title: "Home", href: "/" },
-    { title: "About", href: "/about" },
-    { title: "Projects", href: "#projects" },
+    { title: "About me", href: "/about" },
+    { title: "My Works", href: "#projects" },
+    { title: "My Skills", href: "/Myskills" },
     { title: "Contact", href: "#contact" },
   ];
 
@@ -22,18 +25,22 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 ">
+          <div className="flex-shrink-0">
             <h1 className="text-xl font-bold">Portfolio</h1>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:block ">
+          <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               {menuItems.map((item) => (
                 <a
                   key={item.title}
                   href={item.href}
-                  className="text-white hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    pathname === item.href
+                      ? "text-white border-b-2 border-navlink"
+                      : "text-white hover:text-white hover:border-b-2 hover:border-navlink"
+                  }`}
                 >
                   {item.title}
                 </a>
@@ -67,7 +74,11 @@ const Navbar = () => {
               <a
                 key={item.title}
                 href={item.href}
-                className="block text-white hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  pathname === item.href
+                    ? "text-orange-400 border-b-2 border-orange-400"
+                    : "text-white hover:text-gray-900"
+                }`}
               >
                 {item.title}
               </a>

@@ -1,92 +1,67 @@
 import React from "react";
+import Image from "next/image";
 import Navbar from "../components/Navbar";
+import image1 from "../../../public/passport1.jpg";
 
-const ServiceCard = ({ number, title, description }) => {
+const AboutSection = () => {
   return (
-    <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-900/10 to-purple-800/10 p-1 transition-all duration-300 hover:from-purple-900/20 hover:to-purple-800/20">
-      <div className="relative flex items-center rounded-xl bg-black/90 p-6 lg:p-8">
-        {/* Number Section */}
-        <span className="text-purple-400 text-lg font-medium flex-shrink-0 pr-6">
-          {number}
-        </span>
+    <div className="bg-black min-h-screen">
+      <Navbar />
+      <main className="pt-24 pb-8 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-16">
+            {/* Content Section */}
+            <div className="w-full md:w-3/5 order-2 md:order-1">
+              <h1 className="text-primary text-2xl md:text-3xl font-bold mb-8 animate-fadedown">
+                About me
+              </h1>
+              <div className="space-y-6 text-gray-200">
+                <p className="leading-relaxed animate-fadeleft hover:translate-x-2 transition-transform duration-300">
+                  I am SreeValsan R, a UI/UX designer passionate about creating
+                  intuitive and impactful digital experiences. With expertise in
+                  tools like Figma and Adobe Photoshop, I specialize in
+                  designing user-friendly interfaces that combine functionality
+                  and aesthetics.
+                </p>
+                <p className="leading-relaxed animate-fadeleft hover:translate-x-2 transition-transform duration-300 [animation-delay:200ms]">
+                  My experience spans website redesigns, social media creatives,
+                  and prototyping, focusing on usability and accessibility. I
+                  also possess technical skills in HTML and CSS, enabling me to
+                  bridge the gap between design and development.
+                </p>
+                <p className="leading-relaxed animate-fadeleft hover:translate-x-2 transition-transform duration-300 [animation-delay:400ms]">
+                  Collaboration is at the heart of my work. I thrive in team
+                  environments, working with developers, marketers, and clients
+                  to deliver results-driven solutions. My dedication to detail
+                  ensures every project is executed with precision and
+                  creativity.
+                </p>
+                <p className="leading-relaxed animate-fadeleft hover:translate-x-2 transition-transform duration-300 [animation-delay:600ms]">
+                  Outside of work, I am a state-level judo player and a gold
+                  medalist in yoga, showcasing my commitment to discipline and
+                  excellence. I continuously seek to grow, learn, and contribute
+                  to projects that challenge and inspire me.
+                </p>
+              </div>
+            </div>
 
-        {/* Content Section */}
-        <div className="space-y-2 flex-1">
-          <h3 className="text-xl lg:text-2xl text-white font-medium">
-            {title}
-          </h3>
-          <p className="text-gray-400 text-sm md:text-base">{description}</p>
+            {/* Image Section */}
+            <div className="w-full md:w-2/5 order-1 md:order-2 animate-fadein">
+              <div className="relative bg-gradient-to-br from-primary to-button p-1 rounded-lg overflow-hidden transition-transform duration-500 hover:scale-105 max-w-md mx-auto">
+                <Image
+                  src={image1}
+                  alt="Profile"
+                  width={300}
+                  height={300}
+                  className="rounded-lg w-full"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-
-        {/* Arrow Section */}
-        <div className="hidden md:flex items-center justify-center">
-          <svg
-            className="w-6 h-6 text-purple-400 transform group-hover:translate-x-1 transition-transform duration-300"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
-        </div>
-      </div>
+      </main>
     </div>
   );
 };
 
-const Services = () => {
-  const services = [
-    {
-      number: "01",
-      title: "App Design",
-      description:
-        "Conceptualized a fitness app that tracks daily activities and goals. Emphasized simplicity and motivation through interactive elements.",
-    },
-    {
-      number: "02",
-      title: "UI/UX Design",
-      description:
-        "Designed an e-commerce app to enhance user engagement and streamline the shopping experience. Focused on intuitive navigation and modern UI principles.",
-    },
-    {
-      number: "03",
-      title: "Website Design",
-      description:
-        "Created a responsive portfolio website for a photographer. Used HTML, CSS, and JavaScript to deliver a visually stunning and functional platform.",
-    },
-    {
-      number: "04",
-      title: "Branding design",
-      description:
-        "Developed a cohesive brand identity for a startup, including logo, color palette, and typography. Ensured consistency across all marketing materials.",
-    },
-  ];
-
-  return (
-    <main className="min-h-screen bg-black">
-      <Navbar />
-      <div className="container mx-auto px-4 py-24 lg:py-32">
-        <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16 lg:mb-24 bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent">
-          My Quality Services
-        </h2>
-        <div className="grid gap-8 lg:gap-10 max-w-5xl mx-auto">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.number}
-              number={service.number}
-              title={service.title}
-              description={service.description}
-            />
-          ))}
-        </div>
-      </div>
-    </main>
-  );
-};
-
-export default Services;
+export default AboutSection;

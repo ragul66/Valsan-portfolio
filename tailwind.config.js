@@ -10,11 +10,19 @@ export default {
       colors: {
         primary: "#661f9e",
         button: "#7e22ce",
+        instagram: "#d62976",
+        linkedin: "#0a66c2",
+        navlink: "#9c4854",
         background: "#800080",
         foreground: "#800080",
       },
       animation: {
         blob: "blob 10s infinite",
+        fadein: "fadeIn 1.5s ease-in",
+        fadeup: "fadeInUp 1.5s ease-in",
+        fadedown: "fadeInDown 1.5s ease-in",
+        fadeleft: "fadeInLeft 1.5s ease-in",
+        faderight: "fadeInRight 1.5s ease-in",
       },
       keyframes: {
         blob: {
@@ -29,6 +37,50 @@ export default {
           },
           "100%": {
             transform: "translate(0px, 0px) scale(1)",
+          },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        fadeInUp: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        fadeInDown: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        fadeInLeft: {
+          "0%": {
+            opacity: "0",
+            transform: "translateX(-20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateX(0)",
+          },
+        },
+        fadeInRight: {
+          "0%": {
+            opacity: "0",
+            transform: "translateX(20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateX(0)",
           },
         },
       },

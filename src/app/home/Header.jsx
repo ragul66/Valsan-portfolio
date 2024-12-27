@@ -21,14 +21,14 @@ const Header = () => {
               I'm SreeValsan Ravikumar
             </h2>
             <div className="space-y-2 bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent">
-              <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300 ">
+              <h1 className="text-4xl animate-fadeleft md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300 ">
                 Web Designing &
               </h1>
-              <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300">
+              <h1 className="text-4xl animate-fadeleft md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-300">
                 UX Designer
               </h1>
             </div>
-            <p className="text-gray-300 max-w-lg text-sm md:text-base">
+            <p className="text-gray-300 max-w-lg text-sm md:text-base animate-fadeup">
               a UI/UX designer with a background in Business Engineering. My
               journey into design has shown me the incredible power of visuals
               in shaping user behavior. I'm passionate about prioritizing
@@ -37,12 +37,12 @@ const Header = () => {
               intersection of design and behavior together!
             </p>
             <div className="flex space-x-4 items-center">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 md:px-6 py-2 rounded-full transition-colors text-sm md:text-base">
+              <button className="hover:bg-purple-600 border-2 text-white px-4 md:px-6 py-2 rounded-full transition-colors text-sm md:text-base">
                 Resume
               </button>
               <a
                 href="#"
-                className="text-white hover:text-purple-300 transition-colors"
+                className="text-white hover:text-white hover:bg-instagram transition-colors border-2 p-2 rounded-full"
                 aria-label="Instagram"
               >
                 <svg
@@ -55,7 +55,7 @@ const Header = () => {
               </a>
               <a
                 href="#"
-                className="text-white hover:text-purple-300 transition-colors"
+                className="text-white hover:text-white hover:bg-linkedin transition-colors border-2 p-2 rounded-full"
                 aria-label="LinkedIn"
               >
                 <svg
@@ -71,7 +71,7 @@ const Header = () => {
 
           {/* Photo column - moves to top on mobile */}
           <div className="order-1 lg:order-2">
-            <div className=" aspect-square rounded-lg flex items-center justify-center max-w-md mx-auto">
+            <div className=" aspect-square rounded-lg flex items-center justify-center max-w-md mx-auto transition-transform duration-500 hover:scale-105">
               <Image
                 src={image}
                 alt="Profile"
