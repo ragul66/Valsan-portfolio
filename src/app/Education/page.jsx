@@ -21,7 +21,7 @@ const EducationExperience = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-tr from-black via-black to-purple-900 min-h-screen text-white">
+    <div className="bg-gradient-to-tr from-black via-black to-purple-900  text-white">
       <Navbar />
       <main className="pt-24 pb-8 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">

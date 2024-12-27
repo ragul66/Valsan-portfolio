@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { usePathname } from "next/navigation"; // New hook for `app/` directory
+
+import logo from "../../../public//Black and White Minimalist Professional Initial Logo/1.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +28,9 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold">Portfolio</h1>
+          <div className="flex-shrink-0 flex items-center gap-4">
+            <Image src={logo} height={50} width={50} alt="logo" />
+            <h1>Valsan-portfolio</h1>
           </div>
 
           {/* Desktop Menu */}

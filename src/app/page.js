@@ -4,6 +4,7 @@ import Header from "./home/Header";
 import AboutSection from "./about/page";
 import RecentWorks from "./Myworks/page";
 import EducationExperience from "./Education/page";
+import MyTools from "./Mytools/page";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <RecentWorks />
       <Services />
       <EducationExperience />
+      <MyTools />
     </>
   );
 }

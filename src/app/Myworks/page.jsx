@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 // Images
-import teaimage1 from "../../../public/teaimage1.png";
-import musicimage2 from "../../../public/musicimage2.png";
-import fitnessimage3 from "../../../public/fitnessimage3.png";
-import fooddeleiveryimage4 from "../../../public/fooddeleiveryimage4.png";
-import ecommerceimage5 from "../../../public/ecommerceimage5.png";
-import recreationimage6 from "../../../public/designimage6.png";
+import teaimage1 from "../../../public/myprojects/teaimage1.png";
+import musicimage2 from "../../../public/myprojects/musicimage2.png";
+import fitnessimage3 from "../../../public/myprojects/fitnessimage3.png";
+import fooddeleiveryimage4 from "../../../public/myprojects/fooddeleiveryimage4.png";
+import ecommerceimage5 from "../../../public/myprojects/ecommerceimage5.png";
+import recreationimage6 from "../../../public/myprojects/designimage6.png";
 
 const RecentWorks = () => {
   const projects = [
@@ -63,7 +63,10 @@ const RecentWorks = () => {
       <main className="pt-24 pb-8 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white animate-fadeleft">
-            <span className="text-primary">My Recent</span> Works
+            <span className="bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent">
+              My Recent
+            </span>{" "}
+            Works
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeup">
             {projects.map((project) => (

@@ -12,7 +12,7 @@ const AboutSection = () => {
           <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-16">
             {/* Content Section */}
             <div className="w-full md:w-3/5 order-2 md:order-1">
-              <h1 className="text-primary text-2xl md:text-3xl font-bold mb-8 animate-fadedown">
+              <h1 className="text-primary text-2xl md:text-3xl font-bold mb-8 animate-fadedown order-2 md:order-1">
                 About me
               </h1>
               <div className="space-y-6 text-gray-200">

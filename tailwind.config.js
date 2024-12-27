@@ -12,6 +12,7 @@ export default {
         button: "#7e22ce",
         instagram: "#d62976",
         linkedin: "#0a66c2",
+        dripple: "#e387c9",
         navlink: "#9c4854",
         background: "#800080",
         foreground: "#800080",
