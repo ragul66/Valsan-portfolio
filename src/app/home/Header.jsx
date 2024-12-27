@@ -28,7 +28,7 @@ const Header = () => {
                 UX Designer
               </h1>
             </div>
-            <p className="text-gray-300 max-w-lg text-sm md:text-base animate-fadeup">
+            <p className="text-gray-300 max-w-lg text-sm md:text-base animate-fadeup hover:translate-x-2 transition-transform duration-300">
               a UI/UX designer with a background in Business Engineering. My
               journey into design has shown me the incredible power of visuals
               in shaping user behavior. I'm passionate about prioritizing
