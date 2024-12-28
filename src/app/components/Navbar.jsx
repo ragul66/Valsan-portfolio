@@ -84,8 +84,8 @@ const Navbar = () => {
                 href={item.href}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   pathname === item.href
-                    ? "text-orange-400 border-b-2 border-orange-400"
-                    : "text-white hover:text-gray-900"
+                    ? "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-navlink"
+                    : "hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-[2px] hover:after:w-full hover:after:bg-navlink"
                 }`}
               >
                 {item.title}
