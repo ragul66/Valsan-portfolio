@@ -44,10 +44,10 @@ const Navbar = () => {
                 <a
                   key={item.title}
                   href={item.href}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`relative px-3 py-2 text-sm font-medium text-white transition-colors ${
                     pathname === item.href
-                      ? "text-white border-b-2 border-navlink"
-                      : "text-white hover:text-white hover:border-b-2 hover:border-navlink"
+                      ? "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-navlink"
+                      : "hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-[2px] hover:after:w-full hover:after:bg-navlink"
                   }`}
                 >
                   {item.title}

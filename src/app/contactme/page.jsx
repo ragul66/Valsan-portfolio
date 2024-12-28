@@ -3,17 +3,32 @@ import React from "react";
 import Image from "next/image";
 import contact from "../../../public//Black and White Minimalist Professional Initial Logo/contact.png";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 const ContactSection = () => {
-  const email = "ragulvasanth24@gmail.com";
+  const email = "sreevalsan624@gmail.com";
   const whatsappNumber = "+917558179557";
 
   const handleEmailClick = (e) => {
     e.preventDefault();
-    // Adding subject and body parameters to make it more complete
-    const mailtoLink = `mailto:${email}?subject=Project%20Inquiry&body=Hi,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you.`;
-    window.location.href = mailtoLink; // Using location.href for better compatibility
+
+    const email = "your-email@example.com"; // Replace with your actual email
+    const subject = "Project Inquiry";
+    const body = "Hi, I would like to discuss a project with you.";
+
+    // Construct the mailto link
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    try {
+      // Open the mailto link using `window.open` for better compatibility
+      window.open(mailtoLink, "_self");
+    } catch (error) {
+      console.error("Error opening mail client:", error);
+      alert(
+        "Unable to open your email client. Please ensure your device has an email client properly configured."
+      );
+    }
   };
 
   const handleWhatsAppClick = (e) => {
