@@ -5,7 +5,7 @@ import image1 from "../../../public/sree2.jpg";
 
 const AboutSection = () => {
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-black min-h-screen ">
       <Navbar />
       <main className="pt-24 pb-8 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">

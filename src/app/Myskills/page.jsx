@@ -68,7 +68,7 @@ const Services = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black ">
       <Navbar />
       <div className=" px-4 py-24 lg:py-32">
         <h2 className="text-4xl lg:text-5xl font-bold text-center animate-fadeleft  bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent">

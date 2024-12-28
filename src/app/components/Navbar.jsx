@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation"; // New hook for `app/` directory
 
-import logo from "../../../public//Black and White Minimalist Professional Initial Logo/1.png";
+import logo from "../../../public/Black and White Minimalist Professional Initial Logo/1.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,16 +15,20 @@ const Navbar = () => {
     { title: "About me", href: "/about" },
     { title: "My Works", href: "/Myworks" },
     { title: "My Skills", href: "/Myskills" },
-    { title: "Contact", href: "#contact" },
+    { title: "Contact", href: "/contactme" },
   ];
 
   const handleDownload = () => {
-    // Replace with your resume file path
-    window.open("/resume.pdf", "_blank");
+    const link = document.createElement("a");
+    link.href = "/SREEVALSAN.pdf"; // Access files in the public folder directly
+    link.download = "sreevalsan-resume.pdf"; // Name for the downloaded file
+    document.body.appendChild(link); // Append the link to the document
+    link.click(); // Programmatically click the link
+    document.body.removeChild(link); // Remove the link from the document
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-gradient-to-l from-black via-black to-purple-900 shadow-md z-50 text-white">
+    <nav className="fixed  top-0 w-full bg-gradient-to-l from-black via-black to-purple-900 shadow-md z-50 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}

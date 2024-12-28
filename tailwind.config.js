@@ -14,6 +14,7 @@ export default {
         linkedin: "#0a66c2",
         dripple: "#e387c9",
         navlink: "#9c4854",
+        Contact: "#110616",
         background: "#800080",
         foreground: "#800080",
       },

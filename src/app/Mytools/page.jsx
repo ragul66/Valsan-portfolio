@@ -19,7 +19,7 @@ const MyTools = () => {
   ];
 
   return (
-    <div className="bg-black min-h-screen text-white">
+    <div className="bg-black  text-white">
       <Navbar />
       <main className="pt-24 pb-8 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
@@ -37,7 +37,7 @@ const MyTools = () => {
                     src={tool.icon}
                     alt={tool.name}
                     layout="fill"
-                    className="object-contain"
+                    className="object-contain transition-transform duration-300 hover:scale-110"
                   />
                 </div>
                 <p className="text-sm sm:text-base">{tool.name}</p>

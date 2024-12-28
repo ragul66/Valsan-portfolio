@@ -1,10 +1,19 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import image from "../../../public/sree1.jpg";
 
 const Header = () => {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/SREEVALSAN.pdf"; // Access files in the public folder directly
+    link.download = "sreevalsan-resume.pdf"; // Name for the downloaded file
+    document.body.appendChild(link); // Append the link to the document
+    link.click(); // Programmatically click the link
+    document.body.removeChild(link); // Remove the link from the document
+  };
   return (
-    <div className="relative min-h-screen bg-gradient-to-tr from-black via-black to-purple-900 overflow-hidden">
+    <div className="relative  min-h-screen bg-gradient-to-tr from-black via-black to-purple-900 overflow-hidden">
       {/* Animated background blobs */}
       <div className="absolute inset-0">
         <div className="absolute w-72 md:w-60 h-60 md:h-60 bg-gradient-to-tr from-purple-700 via-purple-800 to-green-700 rounded-full blur-3xl motion-safe:animate-blob top-0 left-20 transform-gpu" />
@@ -37,7 +46,10 @@ const Header = () => {
               intersection of design and behavior together!
             </p>
             <div className="flex space-x-4 items-center">
-              <button className="hover:bg-purple-600 border-2 text-white px-4 md:px-6 py-2 rounded-full transition-colors text-sm md:text-base">
+              <button
+                onClick={handleDownload}
+                className="hover:bg-purple-600 border-2 text-white px-4 md:px-6 py-2 rounded-full transition-colors text-sm md:text-base"
+              >
                 Resume
               </button>
               <a
@@ -46,7 +58,7 @@ const Header = () => {
                 aria-label="Instagram"
               >
                 <svg
-                  className="w-5 h-5 md:w-6 md:h-6"
+                  className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 hover:scale-110"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -60,7 +72,7 @@ const Header = () => {
                 aria-label="LinkedIn"
               >
                 <svg
-                  className="w-5 h-5 md:w-6 md:h-6"
+                  className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 hover:scale-110"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -74,7 +86,7 @@ const Header = () => {
                 aria-label="dripple"
               >
                 <svg
-                  className="w-5 h-5 md:w-6 md:h-6"
+                  className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 hover:scale-110"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
