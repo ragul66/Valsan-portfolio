@@ -67,7 +67,7 @@ const Header = () => {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/sreevalsanravikumar/?originalSubdomain=in"
                 className="text-white hover:text-white hover:bg-linkedin transition-colors border-2 border-navbutton2 p-2 rounded-full"
                 aria-label="LinkedIn"
               >
