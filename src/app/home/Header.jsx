@@ -26,7 +26,7 @@ const Header = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content column - moves to bottom on mobile */}
           <div className="order-2 lg:order-1 space-y-6 md:space-y-8">
-            <h2 className="text-xl md:text-3xl text-white font-medium animate-fadein">
+            <h2 className="text-2xl  md:text-3xl text-white font-medium animate-fadein">
               I'm SreeValsan Ravikumar
             </h2>
             <div className="space-y-2 bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">
