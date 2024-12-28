@@ -11,7 +11,7 @@ const ContactSection = () => {
   const handleEmailClick = (e) => {
     e.preventDefault();
 
-    const email = "your-email@example.com"; // Replace with your actual email
+    const email = "sreevalsan624@gmail.com"; // Replace with your actual email
     const subject = "Project Inquiry";
     const body = "Hi, I would like to discuss a project with you.";
 

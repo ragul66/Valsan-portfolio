@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed  top-0 w-full bg-gradient-to-l from-black via-black to-purple-900 shadow-md z-50 text-white">
+    <nav className="fixed  top-0 w-full bg-gradient-to-l from-black via-black to-purple-900 shadow-md z-50 text-white border-b-2 border-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -66,7 +66,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-900 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white focus:outline-none"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -82,10 +82,10 @@ const Navbar = () => {
               <a
                 key={item.title}
                 href={item.href}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                className={`relative block px-3 py-2 text-base font-medium text-white ${
                   pathname === item.href
-                    ? "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-navlink"
-                    : "hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-[2px] hover:after:w-full hover:after:bg-navlink"
+                    ? "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-orange-400"
+                    : "hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-[2px] hover:after:w-full hover:after:bg-orange-400"
                 }`}
               >
                 {item.title}
