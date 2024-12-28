@@ -15,6 +15,8 @@ export default {
         dripple: "#e387c9",
         navlink: "#9c4854",
         Contact: "#110616",
+        navbutton1: "#9C4854",
+        navbutton2: "#6647AF",
         background: "#800080",
         foreground: "#800080",
       },

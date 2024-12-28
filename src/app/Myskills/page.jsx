@@ -71,7 +71,7 @@ const Services = () => {
     <main className="min-h-screen bg-black ">
       <Navbar />
       <div className=" px-4 py-24 lg:py-32">
-        <h2 className="text-4xl lg:text-5xl font-bold text-center animate-fadeleft  bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent">
+        <h2 className="text-4xl lg:text-5xl font-bold text-center animate-fadeleft  bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">
           My Skills
         </h2>
         <div className="grid gap-8 lg:gap-10 max-w-5xl mx-auto  p-4 lg:p-8 rounded-2xl animate-fadeup">

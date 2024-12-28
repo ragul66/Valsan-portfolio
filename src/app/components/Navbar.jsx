@@ -55,9 +55,9 @@ const Navbar = () => {
               ))}
               <button
                 onClick={handleDownload}
-                className="bg-button text-white px-4 py-2 rounded-3xl text-sm font-medium hover:bg-blue-700 transition-colors"
+                className="bg-gradient-to-br from-navbutton2 to-navbutton1 border-l-2 border-l-navbutton1 border-r-2 border-r-navbutton2 text-white px-4 py-2 rounded-3xl text-sm font-medium transition-colors"
               >
-                Download Resume
+                Resume
               </button>
             </div>
           </div>
@@ -93,7 +93,7 @@ const Navbar = () => {
             ))}
             <button
               onClick={handleDownload}
-              className="w-full text-left bg-button text-white px-3 py-2 rounded-3xl text-base font-medium hover:bg-blue-700 transition-colors"
+              className="w-fit text-center items-center flex bg-gradient-to-br from-navbutton2 to-navbutton1 border-l-2 border-l-navbutton1 border-r-2 border-r-navbutton2  text-white px-3 py-2 rounded-3xl text-base font-medium  transition-colors"
             >
               Download Resume
             </button>

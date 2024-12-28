@@ -63,7 +63,7 @@ const RecentWorks = () => {
       <main className="pt-24 pb-8 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white animate-fadeleft">
-            <span className="bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">
               My Recent
             </span>{" "}
             Works

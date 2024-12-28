@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content={metadata.description} />
         {/* Add favicon link */}
         <link
-          rel="icon"
+          rel="shortcut icon"
           href="/Black and White Minimalist Professional Initial Logo/1.png"
           type="image/png"
         />

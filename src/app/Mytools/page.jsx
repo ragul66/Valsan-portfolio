@@ -23,7 +23,7 @@ const MyTools = () => {
       <Navbar />
       <main className="pt-24 pb-8 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-center text-xl md:text-2xl font-bold text-purple-400 mb-8">
+          <h2 className="text-center text-xl md:text-2xl font-bold text-violet-400  mb-8">
             My Tools
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">

@@ -41,7 +41,7 @@ const ContactSection = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gradient-to-bl from-black via-black to-purple-900 flex flex-col items-center justify-center p-4 min-h-screen">
+      <div className="bg-gradient-to-tr from-black via-black to-purple-900 flex flex-col items-center justify-center p-4 min-h-screen">
         <div className="max-w-2xl w-full text-center space-y-8">
           <div className="bg-transparent rounded-full w-40 h-40 mx-auto flex items-center justify-center">
             <div className="w-40 h-40 bg-gray-900 rounded-full flex items-center justify-center animate-fadein">
