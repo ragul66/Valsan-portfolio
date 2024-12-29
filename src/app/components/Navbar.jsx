@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation"; // New hook for `app/` directory
 
-import logo from "../../../public/Black and White Minimalist Professional Initial Logo/1.png";
+import logo from "../../../public/Black and White Minimalist Professional Initial Logo/2-removebg-preview.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +33,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-4">
-            <Image src={logo} height={50} width={50} alt="logo" />
-            <h1>Valsan-portfolio</h1>
+            <Image src={logo} height={80} width={80} alt="logo" />
+            {/* <h1>Valsan-portfolio</h1> */}
           </div>
 
           {/* Desktop Menu */}
@@ -84,7 +84,7 @@ const Navbar = () => {
                 href={item.href}
                 className={`relative block px-3 py-2 text-base font-medium text-white ${
                   pathname === item.href
-                    ? "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-orange-400"
+                    ? "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] w-fit after:w-full after:bg-orange-400"
                     : "hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-[2px] hover:after:w-full hover:after:bg-orange-400"
                 }`}
               >

@@ -32,7 +32,7 @@ const MyTools = () => {
                 key={tool.id}
                 className="flex flex-col items-center text-center"
               >
-                <div className="relative w-20 h-20 md:w-36 md:h-36  mb-4">
+                <div className="relative w-20 h-20 md:w-36 md:h-36  mb-4 cursor-pointer">
                   <Image
                     src={tool.icon}
                     alt={tool.name}

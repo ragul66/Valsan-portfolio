@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import image from "../../../public/sree1.jpg";
+import dribbble from "../../../public/dribbble.svg";
 
 const Header = () => {
   const handleDownload = () => {
@@ -82,20 +83,16 @@ const Header = () => {
               </a>
               <a
                 href="https://dribbble.com/SreeValsan_Ravi/shots"
-                className="text-white hover:text-white hover:bg-dripple transition-colors border-2 border-navbutton2 p-2 rounded-full"
+                className="text-white  hover:bg-dripple transition-colors border-2 border-navbutton2 p-2 rounded-full"
                 aria-label="dripple"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon-dribbble w-6 h-6 transition-transform duration-300 hover:scale-110 "
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-labelledby="dribbbleIconTitle"
-                  role="img"
-                >
-                  <title id="dribbbleIconTitle">Dribbble</title>
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.949 5.845a9.452 9.452 0 0 1 2.058 5.502c-.264-.057-2.79-.585-5.43-.258-.224-.554-.432-1.09-.66-1.612 2.81-1.183 4.05-3.252 4.032-3.632zm-1.508-.808c-.154.257-1.215 1.932-3.824 2.996a46.26 46.26 0 0 0-2.683-4.067A9.448 9.448 0 0 1 12 2.55a9.44 9.44 0 0 1 4.441 1.487zm-6.47-.65a47.7 47.7 0 0 1 2.535 3.935c-4.22 1.217-7.936 1.309-8.359 1.309a9.448 9.448 0 0 1 5.824-5.244zm-5.882 6.264c.344-.009 4.62-.118 9.008-1.56.224.456.432.918.623 1.387-2.365.597-4.34 1.554-6.056 2.789-.897-1.785-1.657-3.383-1.68-3.423a9.427 9.427 0 0 1-.472-.193c-.42-.14-.827-.331-1.223-.559zm3.802 6.295c1.471-1.226 3.295-2.146 5.528-2.71.387 1.038.691 2.115.935 3.213a40.69 40.69 0 0 1-6.463 3.138 9.442 9.442 0 0 1-.001-3.641zm2.236 4.415a40.014 40.014 0 0 0 6.206-3.019c1.079 3.442 1.413 5.684 1.476 6.001a9.45 9.45 0 0 1-7.682-2.982zm9.11-1.295c-.052-.271-.391-2.006-1.395-4.953 2.345-.271 4.63.094 4.901.147a9.448 9.448 0 0 1-3.506 4.806z" />
-                </svg>
+                <Image
+                  className="transition-transform duration-300 hover:scale-110 hover:text-white"
+                  width={24}
+                  height={24}
+                  src={dribbble}
+                  alt="Dribbble"
+                />
               </a>
             </div>
           </div>

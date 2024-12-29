@@ -1,5 +1,6 @@
 import React from "react";
-
+import logo from "../../../public/Black and White Minimalist Professional Initial Logo/2-removebg-preview.png";
+import Image from "next/image";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -15,8 +16,9 @@ const Footer = () => {
         {/* Right side logo */}
         <div className="flex items-center">
           {/* Replace the placeholder with your actual logo */}
-          <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-            <span className="text-gray-900 font-bold text-xl">SR</span>
+          <div className="w-12 h-12  flex items-center justify-center">
+            {/* <span className="text-gray-900 font-bold text-xl">SR</span> */}
+            <Image src={logo} alt="logo" />
           </div>
         </div>
       </div>
