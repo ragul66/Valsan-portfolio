@@ -16,7 +16,7 @@ const Footer = () => {
         {/* Right side logo */}
         <div className="flex items-center">
           {/* Replace the placeholder with your actual logo */}
-          <div className="w-12 h-12  flex items-center justify-center">
+          <div className="w-16 h-16  flex items-center justify-center">
             {/* <span className="text-gray-900 font-bold text-xl">SR</span> */}
             <Image src={logo} alt="logo" />
           </div>

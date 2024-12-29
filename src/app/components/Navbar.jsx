@@ -77,7 +77,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 items-center  justify-center">
             {menuItems.map((item) => (
               <a
                 key={item.title}
@@ -105,3 +105,36 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// {
+//   /* Mobile Menu */
+// }
+// {
+//   isOpen && (
+//     <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+//       <div className="bg-white rounded-lg p-4 space-y-4 shadow-md w-11/12 max-w-md">
+//         <div className="space-y-4 flex flex-col items-center">
+//           {menuItems.map((item) => (
+//             <a
+//               key={item.title}
+//               href={item.href}
+//               className={`relative block px-4 py-2 text-base font-medium text-gray-800 ${
+//                 pathname === item.href
+//                   ? "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-orange-400"
+//                   : "hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:h-[2px] hover:after:w-full hover:after:bg-orange-400"
+//               }`}
+//             >
+//               {item.title}
+//             </a>
+//           ))}
+//           <button
+//             onClick={handleDownload}
+//             className="w-fit flex items-center justify-center bg-gradient-to-br from-navbutton2 to-navbutton1 border-l-2 border-l-navbutton1 border-r-2 border-r-navbutton2 text-white px-4 py-2 rounded-3xl text-base font-medium transition-colors"
+//           >
+//             Download Resume
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }

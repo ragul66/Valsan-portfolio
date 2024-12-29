@@ -13,11 +13,7 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
         {/* Add favicon link */}
-        <link
-          rel="shortcut icon"
-          href="/Black and White Minimalist Professional Initial Logo/1.png"
-          type="image/png"
-        />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
       </Head>
       <body>{children}</body>
     </html>

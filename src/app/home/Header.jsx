@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import image from "../../../public/sree1.jpg";
-import dribbble from "../../../public/dribbble.svg";
+import dribbble from "../../../public/dribbble-svgrepo-com.svg";
 
 const Header = () => {
   const handleDownload = () => {
