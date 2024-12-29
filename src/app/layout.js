@@ -1,5 +1,4 @@
 import "./globals.css";
-import Head from "next/head";
 
 export const metadata = {
   title: "Valsan-Portfolio",
@@ -9,12 +8,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        {/* Add favicon link */}
-        <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
-      </Head>
       <body>{children}</body>
     </html>
   );
