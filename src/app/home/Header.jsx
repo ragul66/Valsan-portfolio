@@ -39,12 +39,13 @@ const Header = () => {
               </h1>
             </div>
             <p className="text-gray-300 max-w-lg text-sm md:text-base animate-fadeup hover:translate-x-2 transition-transform duration-300">
-              a UI/UX designer with a background in Business Engineering. My
-              journey into design has shown me the incredible power of visuals
-              in shaping user behavior. I'm passionate about prioritizing
-              user-centered design principles, creating engaging and accessible
-              experiences that resonate with users. Let's explore the
-              intersection of design and behavior together!
+              A UI/UX designer with a background in Computer Science and
+              Business Systems. My journey into design has revealed the immense
+              impact of user-centered visuals in shaping behavior. I specialize
+              in creating engaging, accessible experiences that resonate deeply
+              with users. Passionate about blending creativity with
+              functionality, I aim to design solutions that truly make a
+              difference. Let’s craft meaningful digital experiences together!
             </p>
             <div className="flex space-x-4 items-center">
               <button
