@@ -39,13 +39,13 @@ const Header = () => {
               </h1>
             </div>
             <p className="text-gray-300 max-w-lg text-sm md:text-base animate-fadeup hover:translate-x-2 transition-transform duration-300">
-              A UI/UX designer with a background in Computer Science and
-              Business Systems. My journey into design has revealed the immense
-              impact of user-centered visuals in shaping behavior. I specialize
-              in creating engaging, accessible experiences that resonate deeply
-              with users. Passionate about blending creativity with
-              functionality, I aim to design solutions that truly make a
-              difference. Let’s craft meaningful digital experiences together!
+              I began my journey into design with a background in Computer and
+              Business. From then, I have seen the impact of user-centered
+              visuals in shaping user behavior across different platforms. I am
+              passionate about blending creativity with functionality. I love
+              working in a collaborative environment where I can contribute to
+              the product and learn from experts. Let’s craft meaningful digital
+              experiences together!
             </p>
             <div className="flex space-x-4 items-center">
               <button
@@ -106,7 +106,7 @@ const Header = () => {
                 alt="Profile"
                 width={300}
                 height={300}
-                className="rounded-lg"
+                className="rounded-full"
               />
             </div>
           </div>

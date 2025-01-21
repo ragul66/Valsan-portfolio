@@ -52,13 +52,13 @@ const AboutSection = () => {
             </div>
 
             {/* Image Section */}
-            <div className="w-full md:w-2/5 order-1 md:order-2 animate-fadein">
+            <div className="w-full md:w-2/5 order-1 md:order-2 animate-fadein p-4">
               <div className="relative bg-gradient-to-br from-primary to-button p-1 rounded-lg overflow-hidden transition-transform duration-500 hover:scale-105 max-w-md mx-auto">
                 <Image
                   src={image1}
                   alt="Profile"
-                  width={300}
-                  height={300}
+                  width={400}
+                  height={400}
                   className="rounded-lg w-full"
                 />
               </div>
