@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
-import image1 from "../../../public/sree2.jpg";
+import image1 from "../../../public/aboutimage.jpg";
 
 const AboutSection = () => {
   return (
