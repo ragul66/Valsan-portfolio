@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import image from "../../../public/homeimage.jpg";
+import image from "../../../public/homengremovedimage.png";
 import dribbble from "../../../public/dribbble-svgrepo-com.svg";
 
 const Header = () => {
