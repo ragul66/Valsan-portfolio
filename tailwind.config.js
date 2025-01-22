@@ -88,6 +88,9 @@ export default {
           },
         },
       },
+      boxShadow: {
+        glow: "0 0 20px 10px rgba(99, 102, 241, 0.6)",
+      },
     },
   },
   variants: {

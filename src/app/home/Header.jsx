@@ -100,14 +100,10 @@ const Header = () => {
 
           {/* Photo column - moves to top on mobile */}
           <div className="order-1 lg:order-2">
-            <div className=" aspect-square rounded-lg flex items-center justify-center max-w-md mx-auto transition-transform duration-500 hover:scale-105">
-              <Image
-                src={image}
-                alt="Profile"
-                width={300}
-                height={300}
-                className="rounded-full"
-              />
+            <div className="aspect-square rounded-lg flex items-center justify-center max-w-md mx-auto transition-transform duration-500 hover:scale-105">
+              <div className="rounded-full p-1 shadow-glow">
+                <Image src={image} alt="Profile" width={350} height={350} />
+              </div>
             </div>
           </div>
         </div>
