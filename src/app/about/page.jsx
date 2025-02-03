@@ -46,7 +46,7 @@ const AboutSection = () => {
                   Outside of work, I am a state-level judo player and a gold
                   medalist in yoga, showcasing my commitment to discipline and
                   excellence. I continuously seek to grow, learn, and contribute
-                  to projects that challenge and inspire me.
+                  to projects that challenge and inspire Me.
                 </p>
               </div>
             </div>
