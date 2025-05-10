@@ -7,7 +7,7 @@ import dribbble from "../../../public/dribbble-svgrepo-com.svg";
 const Header = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "https://valsan-portfolio.vercel.app/SREEVALSAN.pdf"; // Access files in the public folder directly
+    link.href = "/SREEVALSAN.pdf"; // Access files in the public folder directly
     link.download = "sreevalsan-resume.pdf"; // Name for the downloaded file
     document.body.appendChild(link); // Append the link to the document
     link.click(); // Programmatically click the link
