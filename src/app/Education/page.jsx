@@ -14,14 +14,14 @@ const EducationExperience = () => {
 
   const experience = [
     {
-      date: "JUL 2024- FEB 2025",
-      company: "Qredit (Bangalore)",
-      role: "Operational Executive (Website Manager)",
-    },
-    {
       date: "FEB 2025 - Present",
       company: "Identiti design (Bangalore)",
       role: "Visual Designer",
+    },
+    {
+      date: "JUL 2024- FEB 2025",
+      company: "Qredit (Bangalore)",
+      role: "Operational Executive (Website Manager)",
     },
   ];
 
