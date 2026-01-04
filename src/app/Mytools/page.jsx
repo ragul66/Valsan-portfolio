@@ -5,16 +5,16 @@ import Image from "next/image";
 // Importing tool icons
 import FigmaIcon from "../../../public/mytools/figma.png";
 import PhotoshopIcon from "../../../public/mytools/photoshop.png";
-import HTMLIcon from "../../../public/mytools/html.png";
-import CSSIcon from "../../../public/mytools/css.png";
+import Adobexd from "../../../public/mytools/adobexd.png";
+import AdobeIndesign from "../../../public/mytools/adobeindesign.png";
 import IllustratorIcon from "../../../public/mytools/illustrator.png";
 
 const MyTools = () => {
   const tools = [
     { id: 1, name: "Figma", icon: FigmaIcon },
     { id: 2, name: "Photoshop", icon: PhotoshopIcon },
-    { id: 3, name: "HTML", icon: HTMLIcon },
-    { id: 4, name: "CSS", icon: CSSIcon },
+    { id: 3, name: "Adobe XD", icon: Adobexd },
+    { id: 4, name: "Adobe InDesign", icon: AdobeIndesign },
     { id: 5, name: "Illustrator", icon: IllustratorIcon },
   ];
 
