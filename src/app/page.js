@@ -7,6 +7,7 @@ import EducationExperience from "./Education/page";
 import MyTools from "./Mytools/page";
 import ContactSection from "./contactme/page";
 import Footer from "./components/Footer";
+import MarqueeBanner from "./components/MarqueeBanner";
 
 export default function Home() {
   return (
@@ -14,11 +15,12 @@ export default function Home() {
       <Navbar />
       <Header />
       <AboutSection />
+      <MarqueeBanner />
+      <EducationExperience />
       <RecentWorks />
       <Services />
-      <EducationExperience />
       <MyTools />
-      <ContactSection />
+      {/* <ContactSection /> */}
       <Footer />
     </>
   );
