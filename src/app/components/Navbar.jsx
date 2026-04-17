@@ -1,21 +1,48 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 import logo from "../../../public/Black and White Minimalist Professional Initial Logo/2-removebg-preview.png";
 
+const BREAKPOINT = 1024;
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
+  const menuRef = useRef(null);
 
+  // Track window width
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < BREAKPOINT);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
+  // Close on route change
+  useEffect(() => { setIsOpen(false); }, [pathname]);
 
   const menuItems = [
     { title: "Home", href: "/" },
@@ -35,191 +62,218 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      style={{
-        position: "fixed",
-        top: 0,
-        width: "100%",
-        zIndex: 50,
-        transition: "all 0.3s ease",
-        backgroundColor: scrolled ? "rgba(0,0,0,0.95)" : "rgba(0,0,0,0.6)",
-        backdropFilter: "blur(12px)",
-        borderBottom: scrolled ? "1px solid rgba(139,92,246,0.2)" : "1px solid rgba(255,255,255,0.05)",
-      }}
-    >
-      <div
+    <>
+      <style>{`
+        .mobile-menu {
+          overflow: hidden;
+          max-height: 0;
+          opacity: 0;
+          transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease;
+        }
+        .mobile-menu.open {
+          max-height: 420px;
+          opacity: 1;
+        }
+        .nav-link:hover { color: #c084fc !important; }
+        .mobile-link:hover {
+          color: #c084fc !important;
+          background: rgba(139,92,246,0.08);
+          border-radius: 6px;
+        }
+        .resume-btn:hover {
+          background: #6d28d9 !important;
+          transform: scale(1.04);
+          box-shadow: 0 0 16px rgba(139,92,246,0.4);
+        }
+        .hamburger-btn:hover { transform: scale(1.1); }
+      `}</style>
+
+      <nav
+        ref={menuRef}
         style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          height: "70px",
+          position: "fixed",
+          top: 0,
+          width: "100%",
+          zIndex: 50,
+          transition: "background 0.3s ease, border-color 0.3s ease",
+          backgroundColor: scrolled ? "rgba(0,0,0,0.95)" : "rgba(0,0,0,0.6)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          borderBottom: scrolled
+            ? "1px solid rgba(139,92,246,0.25)"
+            : "1px solid rgba(255,255,255,0.05)",
         }}
       >
-        {/* Logo */}
-        <div style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>
-          <Image src={logo} height={65} width={65} alt="SreeValsan Logo" />
-        </div>
-
-        {/* Desktop Menu */}
         <div
           style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            padding: "0 20px",
             display: "flex",
             alignItems: "center",
-            gap: "8px",
+            justifyContent: "space-between",
+            height: "68px",
           }}
-          className="hidden md:flex"
         >
-          {menuItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <a
-                key={item.title}
-                href={item.href}
-                style={{
-                  position: "relative",
-                  padding: "8px 16px",
-                  fontSize: "13px",
-                  fontWeight: "600",
-                  letterSpacing: "1.5px",
-                  textTransform: "uppercase",
-                  color: isActive ? "#a855f7" : "#ffffff",
-                  textDecoration: "none",
-                  transition: "color 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  if (!isActive) e.currentTarget.style.color = "#c084fc";
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) e.currentTarget.style.color = "#ffffff";
-                }}
-              >
-                {item.title}
-                {isActive && (
-                  <span
+          {/* Logo */}
+          <a href="/" style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>
+            <Image src={logo} height={60} width={60} alt="SreeValsan Logo" priority />
+          </a>
+
+          {/* Desktop nav links — hidden on mobile */}
+          {!isMobile && (
+            <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+              {menuItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    className="nav-link"
                     style={{
-                      position: "absolute",
-                      bottom: "4px",
-                      left: "16px",
-                      right: "16px",
-                      height: "2px",
-                      backgroundColor: "#a855f7",
-                      borderRadius: "1px",
+                      position: "relative",
+                      padding: "8px 14px",
+                      fontSize: "12px",
+                      fontWeight: "600",
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                      color: isActive ? "#a855f7" : "#ffffff",
+                      textDecoration: "none",
+                      transition: "color 0.2s ease",
                     }}
-                  />
-                )}
-              </a>
-            );
-          })}
-        </div>
+                  >
+                    {item.title}
+                    {isActive && (
+                      <span
+                        style={{
+                          position: "absolute",
+                          bottom: "4px",
+                          left: "14px",
+                          right: "14px",
+                          height: "2px",
+                          backgroundColor: "#a855f7",
+                          borderRadius: "1px",
+                        }}
+                      />
+                    )}
+                  </a>
+                );
+              })}
+            </div>
+          )}
 
-        {/* Resume Button */}
-        <div className="hidden md:flex" style={{ alignItems: "center" }}>
-          <button
-            onClick={handleDownload}
-            style={{
-              background: "#7c3aed",
-              color: "#ffffff",
-              padding: "10px 28px",
-              borderRadius: "4px",
-              fontSize: "13px",
-              fontWeight: "700",
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              border: "none",
-              cursor: "pointer",
-              transition: "background 0.3s ease, transform 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#6d28d9";
-              e.currentTarget.style.transform = "scale(1.04)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#7c3aed";
-              e.currentTarget.style.transform = "scale(1)";
-            }}
-          >
-            Resume
-          </button>
-        </div>
-
-        {/* Mobile Hamburger */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            style={{
-              background: "transparent",
-              border: "none",
-              color: "#ffffff",
-              cursor: "pointer",
-              padding: "8px",
-            }}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div
-          style={{
-            backgroundColor: "rgba(0,0,0,0.97)",
-            borderTop: "1px solid rgba(139,92,246,0.3)",
-            padding: "16px 24px",
-          }}
-          className="md:hidden"
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-            {menuItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    padding: "12px 16px",
-                    fontSize: "13px",
-                    fontWeight: "600",
-                    letterSpacing: "1.5px",
-                    textTransform: "uppercase",
-                    color: isActive ? "#a855f7" : "#ffffff",
-                    textDecoration: "none",
-                    borderLeft: isActive ? "3px solid #a855f7" : "3px solid transparent",
-                    transition: "all 0.2s ease",
-                  }}
-                >
-                  {item.title}
-                </a>
-              );
-            })}
+          {/* Desktop resume button */}
+          {!isMobile && (
             <button
-              onClick={() => { handleDownload(); setIsOpen(false); }}
+              onClick={handleDownload}
+              className="resume-btn"
               style={{
-                marginTop: "12px",
                 background: "#7c3aed",
                 color: "#ffffff",
-                padding: "12px 24px",
-                borderRadius: "4px",
-                fontSize: "13px",
+                padding: "9px 24px",
+                borderRadius: "5px",
+                fontSize: "12px",
                 fontWeight: "700",
                 letterSpacing: "2px",
                 textTransform: "uppercase",
                 border: "none",
                 cursor: "pointer",
-                width: "fit-content",
+                transition: "background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease",
               }}
             >
               Resume
             </button>
-          </div>
+          )}
+
+          {/* Hamburger — only on mobile */}
+          {isMobile && (
+            <button
+              className="hamburger-btn"
+              onClick={() => setIsOpen((prev) => !prev)}
+              style={{
+                background: "transparent",
+                border: "1px solid rgba(139,92,246,0.4)",
+                borderRadius: "6px",
+                color: "#ffffff",
+                cursor: "pointer",
+                padding: "6px 8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "transform 0.2s ease",
+              }}
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          )}
         </div>
-      )}
-    </nav>
+
+        {/* Mobile dropdown */}
+        {isMobile && (
+          <div className={`mobile-menu ${isOpen ? "open" : ""}`}>
+            <div
+              style={{
+                borderTop: "1px solid rgba(139,92,246,0.2)",
+                padding: "12px 20px 20px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "2px",
+              }}
+            >
+              {menuItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    className="mobile-link"
+                    onClick={() => setIsOpen(false)}
+                    style={{
+                      padding: "11px 14px",
+                      fontSize: "12px",
+                      fontWeight: "600",
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                      color: isActive ? "#a855f7" : "#e5e7eb",
+                      textDecoration: "none",
+                      borderLeft: isActive ? "3px solid #a855f7" : "3px solid transparent",
+                      display: "block",
+                      transition: "color 0.2s ease, background 0.2s ease",
+                    }}
+                  >
+                    {item.title}
+                  </a>
+                );
+              })}
+
+              <button
+                onClick={() => { handleDownload(); setIsOpen(false); }}
+                className="resume-btn"
+                style={{
+                  marginTop: "14px",
+                  background: "#7c3aed",
+                  color: "#ffffff",
+                  padding: "11px 24px",
+                  borderRadius: "5px",
+                  fontSize: "12px",
+                  fontWeight: "700",
+                  letterSpacing: "2px",
+                  textTransform: "uppercase",
+                  border: "none",
+                  cursor: "pointer",
+                  alignSelf: "flex-start",
+                  transition: "background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease",
+                }}
+              >
+                Resume
+              </button>
+            </div>
+          </div>
+        )}
+      </nav>
+    </>
   );
 };
 
