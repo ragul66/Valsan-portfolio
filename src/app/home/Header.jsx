@@ -460,62 +460,91 @@ const Header = () => {
             max-width: 55%;
           }
           .hero-image-wrap {
-            width: 50%;
+            width: 48%;
             right: 48px;
           }
         }
 
+        /* Tablet — stack layout */
         @media (max-width: 768px) {
           .hero-section {
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
           }
           .hero-content {
-            padding: 100px 24px 40px 24px;
+            padding: 90px 24px 0 24px;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
           }
           .hero-text {
             max-width: 100%;
             z-index: 6;
+            align-items: center;
           }
+          .hero-headline {
+            text-align: center;
+          }
+          .headline-row {
+            justify-content: center;
+            white-space: normal;
+            font-size: clamp(28px, 8vw, 52px);
+          }
+          .headline-outlined {
+            font-size: clamp(28px, 8vw, 52px);
+            text-align: center;
+          }
+          .hero-cta {
+            justify-content: center;
+          }
+          /* Image: pull out of absolute, sit below text */
           .hero-image-wrap {
             position: relative;
             right: unset;
             top: unset;
             bottom: unset;
             width: 100%;
-            height: 50vh;
+            height: 55vw;
+            max-height: 420px;
+            display: flex;
+            align-items: flex-end;
             justify-content: center;
             pointer-events: auto;
+            margin-top: 24px;
           }
           .hero-image-inner {
-            height: 50vh;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
           }
           .hero-image {
-            height: 50vh !important;
+            height: 100% !important;
+            width: auto !important;
+            object-position: bottom;
           }
-          .right-sidebar {
-            display: none;
-          }
-          .scroll-label {
-            display: none;
-          }
-          .headline-row,
-          .headline-outlined {
-            font-size: clamp(28px, 8vw, 52px);
-            white-space: normal;
-          }
+          .right-sidebar { display: none; }
+          .scroll-label  { display: none; }
         }
 
+        /* Mobile */
         @media (max-width: 480px) {
           .hero-content {
-            padding: 90px 20px 32px 20px;
+            padding: 85px 18px 0 18px;
           }
           .headline-row,
           .headline-outlined {
-            font-size: clamp(24px, 9vw, 44px);
+            font-size: clamp(26px, 10vw, 42px);
           }
           .hero-subtitle {
-            font-size: 14px;
+            font-size: 13px;
+          }
+          .hero-image-wrap {
+            height: 60vw;
+            max-height: 340px;
           }
         }
       `}</style>
