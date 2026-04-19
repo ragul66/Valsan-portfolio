@@ -1,301 +1,272 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { Eye, PenLine } from "lucide-react";
+import { Eye } from "lucide-react";
+import ProjectModal from "../components/ProjectModal";
 
 // Images
-import teaimage1 from "../../../public/myprojects/teaimage1.png";
-import musicimage2 from "../../../public/myprojects/musicimage2.png";
+import teaimage1    from "../../../public/myprojects/teaimage1.png";
+import musicimage2  from "../../../public/myprojects/musicimage2.png";
 import fitnessimage3 from "../../../public/myprojects/fitnessimage3.png";
-import fooddeleiveryimage4 from "../../../public/myprojects/fooddeleiveryimage4.png";
-import ecommerceimage5 from "../../../public/myprojects/ecommerceimage5.png";
-import recreationimage6 from "../../../public/myprojects/designimage6.png";
+import foodimage4   from "../../../public/myprojects/fooddeleiveryimage4.png";
+import ecomimage5   from "../../../public/myprojects/ecommerceimage5.png";
+import designimage6 from "../../../public/myprojects/designimage6.png";
 
 const projects = [
   {
     id: "01",
     title: "Organic Tea Store",
-    image: teaimage1,
-    link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store",
     category: "Web Design",
-    bgColor: "#ff4d4d", // Reddish
+    bgColor: "#ff4d4d",
+    textColor: "#fff",
+    link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store",
+    images: [teaimage1],
   },
   {
     id: "02",
     title: "Music Streaming",
-    image: musicimage2,
-    link: "https://dribbble.com/shots/24079544-Music-Streaming-App",
     category: "App Design",
-    bgColor: "#f3f3f3", // Off-white
+    bgColor: "#f3f3f3",
     textColor: "#1a1a1a",
+    link: "https://dribbble.com/shots/24079544-Music-Streaming-App",
+    images: [musicimage2],
   },
   {
     id: "03",
     title: "Fitness App",
-    image: fitnessimage3,
-    link: "https://dribbble.com/shots/23999535-Fitness-Application-Design",
     category: "App Design",
-    bgColor: "#a855f7", // Purple
+    bgColor: "#a855f7",
+    textColor: "#fff",
+    link: "https://dribbble.com/shots/23999535-Fitness-Application-Design",
+    images: [fitnessimage3],
   },
   {
     id: "04",
     title: "Food Delivery",
-    image: fooddeleiveryimage4,
-    link: "https://dribbble.com/shots/23982882-Food-Delivery-Application",
     category: "App Design",
     bgColor: "#ffffff",
     textColor: "#1a1a1a",
+    link: "https://dribbble.com/shots/23982882-Food-Delivery-Application",
+    images: [foodimage4],
   },
   {
     id: "05",
     title: "Ecommerce Mobile",
-    image: ecommerceimage5,
-    link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices",
     category: "App Design",
     bgColor: "#1a1a1a",
     textColor: "#ffffff",
+    link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices",
+    images: [ecomimage5],
   },
   {
     id: "06",
     title: "Design Recreation",
-    image: recreationimage6,
-    link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application",
     category: "App Design",
-    bgColor: "#22c55e", // Green
+    bgColor: "#22c55e",
+    textColor: "#fff",
+    link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application",
+    images: [designimage6],
   },
 ];
 
-const WorkCard = ({ project, index }) => {
-  const isDark = project.textColor !== "#1a1a1a";
-  
+// How far each card is offset when stacked
+const STACK_OFFSET = 24;
+// Sticky top — navbar height + a little breathing room
+const STICKY_TOP = 80;
+
+const WorkCard = ({ project, index, total, onView }) => {
+  const isDark = project.textColor === "#fff" || project.textColor === "#ffffff";
+  const borderColor = isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.1)";
+
   return (
-    <div className="card-container" style={{ top: `calc(10% + ${index * 40}px)` }}>
-      <div 
-        className="work-card" 
-        style={{ 
+    <div
+      style={{
+        position: "sticky",
+        top: `${STICKY_TOP + index * STACK_OFFSET}px`,
+        zIndex: index + 1,
+        paddingBottom: "32px",
+      }}
+    >
+      <div
+        style={{
           backgroundColor: project.bgColor,
-          color: project.textColor || "#fff"
+          color: project.textColor,
+          borderRadius: "16px",
+          padding: "clamp(24px, 4vw, 44px)",
+          minHeight: "520px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          boxShadow: "0 -8px 40px rgba(0,0,0,0.35)",
+          transition: "transform 0.4s ease",
         }}
       >
-        <div className="card-header">
-          <h3 className="card-title">{project.title}</h3>
-          <div className="card-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
-              <path d="M5 5L35 35M35 5L35 35M5 35L35 35" stroke="currentColor" strokeWidth="4" fill="none"/>
-            </svg>
-          </div>
+        {/* Top row: title only */}
+        <div>
+          <h3
+            style={{
+              fontSize: "clamp(32px, 6vw, 72px)",
+              fontWeight: 800,
+              lineHeight: 1,
+              margin: 0,
+              letterSpacing: "-1.5px",
+            }}
+          >
+            {project.title}
+          </h3>
         </div>
 
-        <div className="card-content">
-          <span className="card-id">({project.id})</span>
-          <div className="card-img-wrap">
-            <Image 
-              src={project.image} 
-              alt={project.title} 
-              className="card-img" 
+        {/* Middle: big number (with View above it) + image */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            flex: 1,
+            margin: "28px 0",
+            gap: "16px",
+          }}
+        >
+          {/* Number column with View button above */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "10px" }}>
+            {/* VIEW button — sits just above the number */}
+            <button
+              onClick={() => onView(project)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "9px 18px",
+                borderRadius: "8px",
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "1.5px",
+                textTransform: "uppercase",
+                background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)",
+                border: `1px solid ${borderColor}`,
+                color: project.textColor,
+                cursor: "pointer",
+                transition: "background 0.2s, transform 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = isDark ? "rgba(255,255,255,0.25)" : "rgba(0,0,0,0.18)";
+                e.currentTarget.style.transform = "scale(1.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)";
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              <Eye size={14} />
+              VIEW
+            </button>
+
+            <span
+              style={{
+                fontSize: "clamp(72px, 14vw, 160px)",
+                fontWeight: 800,
+                opacity: 0.88,
+                lineHeight: 1,
+                letterSpacing: "-4px",
+              }}
+            >
+              {project.id}
+            </span>
+          </div>
+
+          <div
+            style={{
+              width: "42%",
+              aspectRatio: "4/3",
+              borderRadius: "10px",
+              overflow: "hidden",
+              background: "#000",
+              flexShrink: 0,
+              transition: "transform 0.4s ease",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.04)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+          >
+            <Image
+              src={project.images[0]}
+              alt={project.title}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
               placeholder="blur"
             />
           </div>
         </div>
 
-        <div className="card-footer">
-          <div className="footer-left">
-            <span className="footer-meta">031</span>
-            <span className="footer-scroll">{project.category}</span>
-          </div>
-          <div className="footer-actions">
-            <Link href={project.link} target="_blank" className="action-btn view-btn">
-              VIEW <Eye size={16} />
-            </Link>
-            <button className="action-btn tuto-btn">
-              TUTO <PenLine size={16} />
-            </button>
-          </div>
+        {/* Footer */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingTop: "18px",
+            borderTop: `1px solid ${borderColor}`,
+          }}
+        >
+          <span style={{ fontSize: "15px", fontWeight: 700, letterSpacing: "1px" }}>
+            {project.category}
+          </span>
+          <span style={{ fontSize: "13px", opacity: 0.5, fontWeight: 600 }}>
+            {project.id} / {String(total).padStart(2, "0")}
+          </span>
         </div>
       </div>
-
-      <style jsx>{`
-        .card-container {
-          position: sticky;
-          width: 100%;
-          padding-bottom: 100px;
-        }
-
-        .work-card {
-          width: 100%;
-          min-height: 500px;
-          border-radius: 12px;
-          padding: 40px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
-          transition: transform 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-        }
-
-        .card-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-        }
-
-        .card-title {
-          font-size: clamp(40px, 8vw, 80px);
-          font-weight: 800;
-          line-height: 1;
-          margin: 0;
-          letter-spacing: -2px;
-        }
-
-        .card-content {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          flex: 1;
-          margin: 40px 0;
-        }
-
-        .card-id {
-          font-size: clamp(60px, 10vw, 120px);
-          font-weight: 800;
-          opacity: 0.9;
-          line-height: 1;
-        }
-
-        .card-img-wrap {
-          width: 40%;
-          aspect-ratio: 4/3;
-          border-radius: 8px;
-          overflow: hidden;
-          background: #000;
-        }
-
-        .card-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .card-footer {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: 20px;
-          padding-top: 20px;
-          border-top: 1px solid rgba(0,0,0,0.1);
-        }
-        
-        /* Adjust border if background is dark */
-        .work-card[style*="background-color: #1a1a1a"] .card-footer {
-          border-top-color: rgba(255,255,255,0.1);
-        }
-
-        .footer-left {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .footer-meta {
-          font-size: 14px;
-          opacity: 0.6;
-        }
-
-        .footer-scroll {
-          font-size: 16px;
-          font-weight: 700;
-        }
-
-        .footer-actions {
-          display: flex;
-          gap: 12px;
-        }
-
-        .action-btn {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 12px 24px;
-          border-radius: 6px;
-          font-size: 14px;
-          font-weight: 700;
-          background: rgba(0, 0, 0, 0.1);
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          transition: all 0.3s;
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .action-btn:hover {
-          background: rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-          .work-card {
-            padding: 24px;
-            min-height: 400px;
-          }
-          .card-content {
-            flex-direction: column-reverse;
-            align-items: flex-start;
-            gap: 20px;
-          }
-          .card-img-wrap {
-            width: 100%;
-          }
-        }
-      `}</style>
     </div>
   );
 };
 
 const RecentWorks = () => {
+  const [activeProject, setActiveProject] = useState(null);
+
   return (
-    <div className="works-section">
-      <div className="section-container">
-        <div className="section-header">
-          <h2 className="section-title">RECENT WORKS</h2>
+    <div
+      style={{
+        background: "#050505",
+        padding: "100px 0 160px",
+        fontFamily: "'Inter', sans-serif",
+      }}
+    >
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
+        {/* Section heading */}
+        <div style={{ textAlign: "center", marginBottom: "80px" }}>
+          <p
+            style={{
+              fontSize: "13px",
+              fontWeight: 700,
+              letterSpacing: "5px",
+              color: "#a855f7",
+              textTransform: "uppercase",
+              margin: 0,
+            }}
+          >
+            Recent Works
+          </p>
         </div>
-        
-        <div className="cards-stack">
+
+        {/* Stacked cards */}
+        <div>
           {projects.map((project, index) => (
-            <WorkCard key={project.id} project={project} index={index} />
+            <WorkCard
+              key={project.id}
+              project={project}
+              index={index}
+              total={projects.length}
+              onView={setActiveProject}
+            />
           ))}
         </div>
       </div>
 
-      <style jsx>{`
-        .works-section {
-          background: #050505;
-          padding: 100px 0;
-          min-height: 100vh;
-          font-family: 'Inter', sans-serif;
-        }
-
-        .section-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 24px;
-        }
-
-        .section-header {
-          margin-bottom: 100px;
-          text-align: center;
-        }
-
-        .section-title {
-          font-size: 20px;
-          font-weight: 700;
-          letter-spacing: 4px;
-          color: #a855f7;
-        }
-
-        .cards-stack {
-          display: flex;
-          flex-direction: column;
-          gap: 0;
-        }
-      `}</style>
+      {/* Modal */}
+      {activeProject && (
+        <ProjectModal
+          project={activeProject}
+          onClose={() => setActiveProject(null)}
+        />
+      )}
     </div>
   );
 };
