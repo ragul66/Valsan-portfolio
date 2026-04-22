@@ -5,26 +5,27 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const ProjectModal = ({ project, onClose }) => {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(null); // "left" | "right"
+  const [direction, setDirection] = useState(null);
   const [animating, setAnimating] = useState(false);
 
-  const images = project?.images || [];
+  const slides = project?.slides || [];
+  const currentSlide = slides[current];
 
   const go = useCallback(
     (dir) => {
-      if (animating || images.length <= 1) return;
+      if (animating || slides.length <= 1) return;
       setDirection(dir);
       setAnimating(true);
       setTimeout(() => {
         setCurrent((prev) =>
           dir === "right"
-            ? (prev + 1) % images.length
-            : (prev - 1 + images.length) % images.length
+            ? (prev + 1) % slides.length
+            : (prev - 1 + slides.length) % slides.length
         );
         setAnimating(false);
       }, 320);
     },
-    [animating, images.length]
+    [animating, slides.length]
   );
 
   // Keyboard nav + close
@@ -262,7 +263,7 @@ const ProjectModal = ({ project, onClose }) => {
           <div className="modal-img-area">
             <div className="modal-img-slide" style={slideStyle}>
               <Image
-                src={images[current]}
+                src={currentSlide.src}
                 alt={`${project.title} screenshot ${current + 1}`}
                 className="modal-img"
                 width={800}
@@ -271,7 +272,7 @@ const ProjectModal = ({ project, onClose }) => {
               />
             </div>
 
-            {images.length > 1 && (
+            {slides.length > 1 && (
               <>
                 <button className="modal-nav left" onClick={() => go("left")} aria-label="Previous image">
                   <ChevronLeft size={20} />
@@ -284,9 +285,9 @@ const ProjectModal = ({ project, onClose }) => {
           </div>
 
           {/* Dots */}
-          {images.length > 1 && (
+          {slides.length > 1 && (
             <div className="modal-dots">
-              {images.map((_, i) => (
+              {slides.map((_, i) => (
                 <button
                   key={i}
                   className={`modal-dot ${i === current ? "active" : ""}`}
@@ -297,13 +298,13 @@ const ProjectModal = ({ project, onClose }) => {
             </div>
           )}
 
-          {/* Footer */}
+          {/* Footer — link changes per slide */}
           <div className="modal-footer">
             <span className="modal-counter">
-              {String(current + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+              {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
             </span>
             <a
-              href={project.link}
+              href={currentSlide.link}
               target="_blank"
               rel="noopener noreferrer"
               className="modal-dribbble-btn"

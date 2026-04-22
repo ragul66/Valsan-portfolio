@@ -12,6 +12,8 @@ import foodimage4   from "../../../public/myprojects/fooddeleiveryimage4.png";
 import ecomimage5   from "../../../public/myprojects/ecommerceimage5.png";
 import designimage6 from "../../../public/myprojects/designimage6.png";
 
+// Each project has 8 slides. Replace the dummy entries with real images when ready.
+// Each slide: { src: <image>, link: "<dribbble or any url>" }
 const projects = [
   {
     id: "01",
@@ -19,8 +21,16 @@ const projects = [
     category: "Web Design",
     bgColor: "#ff4d4d",
     textColor: "#fff",
-    link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store",
-    images: [teaimage1],
+    slides: [
+      { src: teaimage1, link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store" },
+      { src: teaimage1, link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store" },
+      { src: teaimage1, link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store" },
+      { src: teaimage1, link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store" },
+      { src: teaimage1, link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store" },
+      { src: teaimage1, link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store" },
+      { src: teaimage1, link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store" },
+      { src: teaimage1, link: "https://dribbble.com/shots/24364816-Home-Page-for-an-Organic-Tea-Store" },
+    ],
   },
   {
     id: "02",
@@ -28,8 +38,16 @@ const projects = [
     category: "App Design",
     bgColor: "#f3f3f3",
     textColor: "#1a1a1a",
-    link: "https://dribbble.com/shots/24079544-Music-Streaming-App",
-    images: [musicimage2],
+    slides: [
+      { src: musicimage2, link: "https://dribbble.com/shots/24079544-Music-Streaming-App" },
+      { src: musicimage2, link: "https://dribbble.com/shots/24079544-Music-Streaming-App" },
+      { src: musicimage2, link: "https://dribbble.com/shots/24079544-Music-Streaming-App" },
+      { src: musicimage2, link: "https://dribbble.com/shots/24079544-Music-Streaming-App" },
+      { src: musicimage2, link: "https://dribbble.com/shots/24079544-Music-Streaming-App" },
+      { src: musicimage2, link: "https://dribbble.com/shots/24079544-Music-Streaming-App" },
+      { src: musicimage2, link: "https://dribbble.com/shots/24079544-Music-Streaming-App" },
+      { src: musicimage2, link: "https://dribbble.com/shots/24079544-Music-Streaming-App" },
+    ],
   },
   {
     id: "03",
@@ -37,8 +55,16 @@ const projects = [
     category: "App Design",
     bgColor: "#a855f7",
     textColor: "#fff",
-    link: "https://dribbble.com/shots/23999535-Fitness-Application-Design",
-    images: [fitnessimage3],
+    slides: [
+      { src: fitnessimage3, link: "https://dribbble.com/shots/23999535-Fitness-Application-Design" },
+      { src: fitnessimage3, link: "https://dribbble.com/shots/23999535-Fitness-Application-Design" },
+      { src: fitnessimage3, link: "https://dribbble.com/shots/23999535-Fitness-Application-Design" },
+      { src: fitnessimage3, link: "https://dribbble.com/shots/23999535-Fitness-Application-Design" },
+      { src: fitnessimage3, link: "https://dribbble.com/shots/23999535-Fitness-Application-Design" },
+      { src: fitnessimage3, link: "https://dribbble.com/shots/23999535-Fitness-Application-Design" },
+      { src: fitnessimage3, link: "https://dribbble.com/shots/23999535-Fitness-Application-Design" },
+      { src: fitnessimage3, link: "https://dribbble.com/shots/23999535-Fitness-Application-Design" },
+    ],
   },
   {
     id: "04",
@@ -46,8 +72,16 @@ const projects = [
     category: "App Design",
     bgColor: "#ffffff",
     textColor: "#1a1a1a",
-    link: "https://dribbble.com/shots/23982882-Food-Delivery-Application",
-    images: [foodimage4],
+    slides: [
+      { src: foodimage4, link: "https://dribbble.com/shots/23982882-Food-Delivery-Application" },
+      { src: foodimage4, link: "https://dribbble.com/shots/23982882-Food-Delivery-Application" },
+      { src: foodimage4, link: "https://dribbble.com/shots/23982882-Food-Delivery-Application" },
+      { src: foodimage4, link: "https://dribbble.com/shots/23982882-Food-Delivery-Application" },
+      { src: foodimage4, link: "https://dribbble.com/shots/23982882-Food-Delivery-Application" },
+      { src: foodimage4, link: "https://dribbble.com/shots/23982882-Food-Delivery-Application" },
+      { src: foodimage4, link: "https://dribbble.com/shots/23982882-Food-Delivery-Application" },
+      { src: foodimage4, link: "https://dribbble.com/shots/23982882-Food-Delivery-Application" },
+    ],
   },
   {
     id: "05",
@@ -55,8 +89,16 @@ const projects = [
     category: "App Design",
     bgColor: "#1a1a1a",
     textColor: "#ffffff",
-    link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices",
-    images: [ecomimage5],
+    slides: [
+      { src: ecomimage5, link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices" },
+      { src: ecomimage5, link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices" },
+      { src: ecomimage5, link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices" },
+      { src: ecomimage5, link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices" },
+      { src: ecomimage5, link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices" },
+      { src: ecomimage5, link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices" },
+      { src: ecomimage5, link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices" },
+      { src: ecomimage5, link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices" },
+    ],
   },
   {
     id: "06",
@@ -64,8 +106,16 @@ const projects = [
     category: "App Design",
     bgColor: "#22c55e",
     textColor: "#fff",
-    link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application",
-    images: [designimage6],
+    slides: [
+      { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
+      { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
+      { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
+      { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
+      { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
+      { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
+      { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
+      { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
+    ],
   },
 ];
 
@@ -188,7 +238,7 @@ const WorkCard = ({ project, index, total, onView }) => {
             onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
           >
             <Image
-              src={project.images[0]}
+              src={project.slides[0].src}
               alt={project.title}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
               placeholder="blur"
