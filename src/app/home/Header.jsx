@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import image from "../../../public/aboutimagebg.png";
+import image from "../../../public/aboutimage.png";
 // import image from "../../../public/aboutimage.jpg"
 
 const ROTATING_WORDS = ["Visual", "Web", "UX"];
@@ -165,9 +165,9 @@ const Header = () => {
           <Image
             src={image}
             alt="SreeValsan Ravikumar - Creative Visual Designer"
-            width={900}
-            height={1100}
-            className="hero-image"
+            width={700}
+            height={900}
+            className="hero-image animate-fadein"
             priority
           />
         </div>

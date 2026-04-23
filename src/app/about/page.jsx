@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
+import useInView from "../hooks/useInView";
 
 // ── Full bio text split into words for scroll reveal ──
 const BIO =
@@ -12,6 +13,7 @@ export default function AboutSection() {
   const sectionRef = useRef(null);
   const cardRef = useRef(null);
   const [revealCount, setRevealCount] = useState(0);
+  const [animRef, animIn] = useInView(0.08);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +44,10 @@ export default function AboutSection() {
       <main className="about-main" ref={sectionRef}>
         {/* invisible sentinel to track scroll position */}
         {/* ── Card ── */}
-        <div className="about-card" ref={cardRef}>
+        <div
+          className={`about-card anim-fade-up ${animIn ? "anim-in" : ""}`}
+          ref={(el) => { cardRef.current = el; animRef.current = el; }}
+        >
           {/* Mandala / decorative icon */}
           <div className="mandala-wrap">
             <svg

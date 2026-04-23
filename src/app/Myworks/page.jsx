@@ -281,7 +281,7 @@ const RecentWorks = () => {
         fontFamily: "'Inter', sans-serif",
       }}
     >
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
+      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 40px" }}>
         {/* Section heading */}
         <div style={{ textAlign: "center", marginBottom: "80px" }}>
           <p
