@@ -47,8 +47,8 @@ const Navbar = () => {
   const menuItems = [
     { title: "Home", href: "/" },
     { title: "About Me", href: "/about" },
+    { title: "Works", href: "/Myworks" },
     { title: "Skills", href: "/Myskills" },
-    { title: "Portfolio", href: "/Myworks" },
     { title: "Contact", href: "/contactme" },
   ];
 
@@ -96,12 +96,12 @@ const Navbar = () => {
           width: "100%",
           zIndex: 50,
           transition: "background 0.3s ease, border-color 0.3s ease",
-          backgroundColor: scrolled ? "rgba(0,0,0,0.95)" : "rgba(0,0,0,0.6)",
-          backdropFilter: "blur(14px)",
-          WebkitBackdropFilter: "blur(14px)",
+          backgroundColor: scrolled ? "rgba(0,0,0,0.92)" : "rgba(0,0,0,0)",
+          backdropFilter: scrolled ? "blur(14px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
           borderBottom: scrolled
             ? "1px solid rgba(139,92,246,0.25)"
-            : "1px solid rgba(255,255,255,0.05)",
+            : "1px solid transparent",
         }}
       >
         <div

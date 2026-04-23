@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Navbar from "../components/Navbar";
-import useInView from "../hooks/useInView";
+import Image from "next/image";
+import aboutSvg from "../../../public/about-top-image.svg";
 
-// ── Full bio text split into words for scroll reveal ──
 const BIO =
   "I'm A Visual Designer Passionate About Crafting Clean And Intuitive Digital Experiences. I've Worked On Website Designs And Social Media Visuals For Brands Like Amazon Associates And Designed A Mobile App For A Fintech Company. I Specialize In UI/UX For Web Apps And Work With Figma, Photoshop, InDesign, And Motion Tools Like After Effects. Some Of My Proudest Projects Include A Doctor's Website And Multi-Page Layouts For Various Companies.";
 
@@ -11,24 +10,25 @@ const WORDS = BIO.split(" ");
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
-  const cardRef = useRef(null);
+  const stickyRef = useRef(null);
   const [revealCount, setRevealCount] = useState(0);
-  const [animRef, animIn] = useInView(0.08);
+  const [cardVisible, setCardVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!cardRef.current) return;
-      const rect = cardRef.current.getBoundingClientRect();
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionH = sectionRef.current.offsetHeight;
       const windowH = window.innerHeight;
 
-      // Only start revealing once the card bottom has entered the viewport top
-      // (i.e. card is scrolled into view from the bottom)
-      // revealStart = card top enters bottom of screen
-      // revealEnd   = card bottom reaches center of screen
-      const revealStart = windowH - rect.top;      // positive once card is in view
-      const revealRange = rect.height * 1.4;        // over this range words reveal
+      // Card fades in once section enters viewport
+      if (rect.top < windowH * 0.85) setCardVisible(true);
 
-      const progress = Math.max(0, Math.min(1, revealStart / revealRange));
+      // Word reveal: progress from when sticky panel is pinned to when section ends
+      // rect.top goes from 0 (pinned) to -(sectionH - windowH) (end)
+      const scrolled = -rect.top; // 0 at pin start, positive as we scroll
+      const scrollRange = sectionH - windowH; // total scrollable distance inside section
+      const progress = Math.max(0, Math.min(1, scrolled / scrollRange));
       setRevealCount(Math.floor(progress * WORDS.length));
     };
 
@@ -38,52 +38,22 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <div className="about-page">
-      <Navbar />
-
-      <main className="about-main" ref={sectionRef}>
-        {/* invisible sentinel to track scroll position */}
-        {/* ── Card ── */}
-        <div
-          className={`about-card anim-fade-up ${animIn ? "anim-in" : ""}`}
-          ref={(el) => { cardRef.current = el; animRef.current = el; }}
-        >
-          {/* Mandala / decorative icon */}
-          <div className="mandala-wrap">
-            <svg
-              viewBox="0 0 80 80"
-              width="56"
-              height="56"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="mandala-svg"
-            >
-              {/* Petals */}
-              {Array.from({ length: 12 }).map((_, i) => {
-                const angle = (i * 30 * Math.PI) / 180;
-                const x = 40 + 20 * Math.cos(angle);
-                const y = 40 + 20 * Math.sin(angle);
-                const x2 = 40 + 28 * Math.cos(angle);
-                const y2 = 40 + 28 * Math.sin(angle);
-                return (
-                  <g key={i}>
-                    <line
-                      x1="40" y1="40"
-                      x2={x2} y2={y2}
-                      stroke="#a855f7"
-                      strokeWidth="0.8"
-                      opacity="0.6"
-                    />
-                    <circle cx={x} cy={y} r="1.5" fill="#a855f7" opacity="0.8" />
-                  </g>
-                );
-              })}
-              {/* Inner rings */}
-              <circle cx="40" cy="40" r="8"  stroke="#a855f7" strokeWidth="1" opacity="0.9" fill="none" />
-              <circle cx="40" cy="40" r="14" stroke="#a855f7" strokeWidth="0.7" opacity="0.5" fill="none" />
-              <circle cx="40" cy="40" r="20" stroke="#a855f7" strokeWidth="0.5" opacity="0.3" fill="none" />
-              <circle cx="40" cy="40" r="3"  fill="#a855f7" />
-            </svg>
+    <div
+      ref={sectionRef}
+      className="about-section"
+    >
+      {/* Sticky panel — stays pinned while you scroll through the section */}
+      <div ref={stickyRef} className="about-sticky">
+        <div className={`about-card ${cardVisible ? "card-visible" : ""}`}>
+          {/* Top SVG image */}
+          <div className="about-svg-wrap">
+            <Image
+              src={aboutSvg}
+              alt="About decoration"
+              width={120}
+              height={120}
+              className="about-svg-img"
+            />
           </div>
 
           {/* Scroll-reveal paragraph */}
@@ -91,36 +61,39 @@ export default function AboutSection() {
             {WORDS.map((word, i) => {
               const isRevealed = i < revealCount;
               return (
-                <span
-                  key={i}
-                  className={`bio-word ${isRevealed ? "revealed" : ""}`}
-                >
+                <span key={i} className={`bio-word ${isRevealed ? "revealed" : ""}`}>
                   {word}{" "}
                 </span>
               );
             })}
           </p>
         </div>
-      </main>
+      </div>
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
 
-        .about-page {
+        /* Section is tall enough to scroll through all words */
+        .about-section {
           background: #050505;
-          min-height: 100vh;
+          /* height = viewport + scrolling room for all words */
+          height: calc(100vh + 280vh);
+          position: relative;
           font-family: 'Inter', 'Helvetica Neue', sans-serif;
         }
 
-        .about-main {
+        /* Sticky container pins to top while section scrolls */
+        .about-sticky {
+          position: sticky;
+          top: 0;
+          height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
-          min-height: calc(100vh - 80px);
-          padding: 120px 24px 80px;
+          padding: 80px 24px;
         }
 
-        /* ── Card ── */
+        /* Card */
         .about-card {
           position: relative;
           max-width: 1100px;
@@ -128,11 +101,19 @@ export default function AboutSection() {
           background: rgba(10, 8, 18, 0.95);
           border: 1.5px solid rgba(168, 85, 247, 0.55);
           border-radius: 20px;
-          padding: 72px 64px 72px;
+          padding: 64px 64px;
           text-align: center;
           box-shadow:
             0 0 60px rgba(124, 58, 237, 0.08),
             inset 0 0 40px rgba(124, 58, 237, 0.04);
+          opacity: 0;
+          transform: translateY(48px);
+          transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .about-card.card-visible {
+          opacity: 1;
+          transform: translateY(0);
         }
 
         /* Corner accents */
@@ -147,31 +128,28 @@ export default function AboutSection() {
           border-radius: 3px;
           opacity: 0.5;
         }
-        .about-card::before {
-          top: -1px; left: -1px;
-          border-width: 2px 0 0 2px;
-        }
-        .about-card::after {
-          bottom: -1px; right: -1px;
-          border-width: 0 2px 2px 0;
-        }
+        .about-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+        .about-card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
-        /* ── Mandala ── */
-        .mandala-wrap {
+        /* SVG top image */
+        .about-svg-wrap {
           display: flex;
           justify-content: center;
-          margin-bottom: 32px;
+          margin-bottom: 28px;
         }
-        .mandala-svg {
+        .about-svg-img {
+          width: 100px !important;
+          height: 100px !important;
+          object-fit: contain;
+          filter: drop-shadow(0 0 10px rgba(168,85,247,0.45));
           animation: spin-slow 18s linear infinite;
-          filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
         }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to   { transform: rotate(360deg); }
         }
 
-        /* ── Bio text ── */
+        /* Bio text */
         .bio-text {
           margin: 0;
           font-size: clamp(15px, 1.6vw, 19px);
@@ -180,33 +158,21 @@ export default function AboutSection() {
           letter-spacing: 0.3px;
           text-transform: capitalize;
         }
-
         .bio-word {
-          color: rgba(255, 255, 255, 0.2);
-          transition: color 0.4s ease;
+          color: rgba(255,255,255,0.15);
+          transition: color 0.35s ease;
           display: inline;
         }
+        .bio-word.revealed { color: #ffffff; }
 
-        .bio-word.revealed {
-          color: #ffffff;
-        }
-
-        /* ── Responsive ── */
         @media (max-width: 768px) {
-          .about-card {
-            padding: 40px 28px 40px;
-          }
-          .bio-text {
-            font-size: 15px;
-          }
+          .about-card { padding: 40px 24px; }
+          .about-section { height: calc(100vh + 320vh); }
         }
         @media (max-width: 480px) {
-          .about-main {
-            padding: 100px 16px 60px;
-          }
-          .about-card {
-            padding: 32px 20px 32px;
-          }
+          .about-sticky { padding: 70px 16px; }
+          .about-card { padding: 32px 16px; }
+          .bio-text { font-size: 14px; }
         }
       `}</style>
     </div>

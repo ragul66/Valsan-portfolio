@@ -76,7 +76,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="social-link"
+            className="social-link instagram"
           >
             <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
               <title>Instagram</title>
@@ -90,7 +90,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="social-link"
+            className="social-link linkedin"
           >
             <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
               <title>LinkedIn</title>
@@ -104,7 +104,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Dribbble"
-            className="social-link"
+            className="social-link dribbble"
           >
             <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
               <title>Dribbble</title>
@@ -165,8 +165,8 @@ const Header = () => {
           <Image
             src={image}
             alt="SreeValsan Ravikumar - Creative Visual Designer"
-            width={700}
-            height={900}
+            width={600}
+            height={800}
             className="hero-image animate-fadein"
             priority
           />
@@ -238,21 +238,22 @@ const Header = () => {
           transform: translateY(-50%) rotate(-90deg);
           display: flex;
           align-items: center;
-          gap: 10px;
-          color: rgba(255,255,255,0.35);
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 3px;
+          gap: 12px;
+          color: rgba(255,255,255,0.6);
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 4px;
           text-transform: uppercase;
           white-space: nowrap;
           user-select: none;
           z-index: 10;
         }
         .label-line {
-          width: 40px;
-          height: 1px;
-          background-color: rgba(168,85,247,0.5);
+          width: 52px;
+          height: 2px;
+          background-color: rgba(168,85,247,0.6);
           display: inline-block;
+          border-radius: 2px;
         }
 
         /* ── Right Sidebar: Follow Me + Icons ── */
@@ -312,10 +313,10 @@ const Header = () => {
           align-items: center;
           justify-content: center;
         }
-        .social-link:hover {
-          color: #a855f7;
-          transform: scale(1.25);
-        }
+        .social-link:hover { transform: scale(1.25); }
+        .social-link.instagram:hover { color: #e1306c; }
+        .social-link.linkedin:hover  { color: #0a66c2; }
+        .social-link.dribbble:hover  { color: #ea4c89; }
         .sidebar-line {
           width: 2px;
           height: 52px;
@@ -388,6 +389,7 @@ const Header = () => {
           color: transparent;
           -webkit-text-stroke: 2px #a855f7;
           text-stroke: 2px #a855f7;
+          font-family: 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
           animation: fadeInLeft 1s ease both 0.2s;
         }
 
