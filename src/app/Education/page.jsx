@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import designerIllustration from "../../../public/designer_illustration.png";
+import useInView from "../hooks/useInView";
 
 const experience = [
   {
@@ -61,6 +62,8 @@ const TABS = [
 const EducationExperience = () => {
   const [activeTab, setActiveTab] = useState("experience");
   const current = TABS.find((t) => t.id === activeTab);
+  const [headRef, headIn] = useInView();
+  const [cardRef, cardIn] = useInView(0.1);
 
   return (
     <section className="edu-section">
@@ -69,7 +72,7 @@ const EducationExperience = () => {
 
       <div className="edu-container">
         {/* ── Card ── */}
-        <div className="edu-card">
+        <div className={`edu-card anim-scale ${cardIn ? "anim-in" : ""}`} ref={cardRef}>
           {/* Tab Bar */}
           <div className="tab-bar">
             {TABS.map((tab) => (

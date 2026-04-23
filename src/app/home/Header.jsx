@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import image from "../../../public/aboutimagebg.png";
+// import image from "../../../public/aboutimage.jpg"
 
 const ROTATING_WORDS = ["Visual", "Web", "UX"];
 

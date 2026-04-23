@@ -2,19 +2,22 @@
 import React from "react";
 import Image from "next/image";
 import logo from "../../../public/Black and White Minimalist Professional Initial Logo/2-removebg-preview.png";
+import useInView from "../hooks/useInView";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [headRef, headIn] = useInView(0.1);
+  const [bodyRef, bodyIn] = useInView(0.1);
 
   return (
     <footer className="footer-root">
       {/* ── Top: GET IN TOUCH ── */}
       <div className="footer-hero">
-        <h2 className="footer-heading">GET IN TOUCH</h2>
+        <h2 ref={headRef} className={`footer-heading anim-fade-up ${headIn ? "anim-in" : ""}`}>GET IN TOUCH</h2>
 
-        <div className="footer-body">
+        <div ref={bodyRef} className="footer-body">
           {/* Left */}
-          <div className="footer-left">
+          <div className={`footer-left anim-fade-left delay-200 ${bodyIn ? "anim-in" : ""}`}>
             <p className="footer-intro">
               Hello I&rsquo;m SreeValsan, Visual &amp; UI UX<br />
               Designer Based In Bangalore
@@ -28,7 +31,7 @@ const Footer = () => {
           </div>
 
           {/* Right – Social Buttons */}
-          <div className="footer-socials">
+          <div className={`footer-socials anim-fade-right delay-300 ${bodyIn ? "anim-in" : ""}`}>
             <div className="socials-row">
               <a
                 href="https://www.linkedin.com/in/sreevalsanravikumar/"

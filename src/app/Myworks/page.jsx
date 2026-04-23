@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Eye } from "lucide-react";
 import ProjectModal from "../components/ProjectModal";
+import useInView from "../hooks/useInView";
 
 // Images
 import teaimage1    from "../../../public/myprojects/teaimage1.png";
@@ -270,6 +271,7 @@ const WorkCard = ({ project, index, total, onView }) => {
 
 const RecentWorks = () => {
   const [activeProject, setActiveProject] = useState(null);
+  const [titleRef, titleIn] = useInView();
 
   return (
     <div
@@ -283,6 +285,8 @@ const RecentWorks = () => {
         {/* Section heading */}
         <div style={{ textAlign: "center", marginBottom: "80px" }}>
           <p
+            ref={titleRef}
+            className={`anim-fade-down ${titleIn ? "anim-in" : ""}`}
             style={{
               fontSize: "13px",
               fontWeight: 700,
