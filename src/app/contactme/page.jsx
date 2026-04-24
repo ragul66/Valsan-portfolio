@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import contact from "../../../public//Black and White Minimalist Professional Initial Logo/contact.png";
+import contact from "../../../public/Black and White Minimalist Professional Initial Logo/contact.png";
 import Navbar from "../components/Navbar";
 
 const ContactSection = () => {
