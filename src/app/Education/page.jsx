@@ -114,7 +114,7 @@ const EducationExperience = () => {
                         <span className="item-role">{item.role}</span>
                         <span className="item-company">{item.company}</span>
                       </div>
-                      <span className="item-date">{item.date}</span>
+                      {/* <span className="item-date">{item.date}</span> */}
                     </div>
                   </div>
                 ))}

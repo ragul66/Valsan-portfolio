@@ -12,16 +12,21 @@ import dataworkz3 from "../../../public/datawrkz/datawrkz3.png";
 import dataworkz4 from "../../../public/datawrkz/datawrkz4.png";
 import dataworkz5 from "../../../public/datawrkz/datawrkz5.png";
 
+import vizibl1 from "../../../public/vizibl/vizibl1.png";
+import vizibl2 from "../../../public/vizibl/vizibl2.png";
+import vizibl3 from "../../../public/vizibl/vizibl3.png";
+import vizibl4 from "../../../public/vizibl/vizibl4.png";
 
-import musicimage2 from "../../../public/myprojects/musicimage2.png";
+
+
 import fitnessimage3 from "../../../public/myprojects/fitnessimage3.png";
 import foodimage4 from "../../../public/myprojects/fooddeleiveryimage4.png";
 import ecomimage5 from "../../../public/myprojects/ecommerceimage5.png";
-import designimage6 from "../../../public/myprojects/designimage6.png";
+// import designimage6 from "../../../public/myprojects/designimage6.png";
 
 const projects = [
   {
-    id: "01", title: "DataWrkz", category: "Web Design", bgColor: "#e63946", textColor: "#fff",
+    id: "01", title: "DataWrkz", category: "Web Design", bgColor: "orange", textColor: "#fff",
     slides: [
       { src: dataworkz1, link: "https://www.datawrkz.com/" },
       { src: dataworkz2, link: "https://www.datawrkz.com/multicultural-advertising-uk/" }, // Swap `teaimage1` here with your real image, e.g., teaimage2
@@ -31,11 +36,12 @@ const projects = [
     ]
   },
   {
-    id: "02", title: "Music Streaming", category: "App Design", bgColor: "#6366f1", textColor: "#fff",
+    id: "02", title: "Vizibl", category: "App Design", bgColor: "#6366f1", textColor: "#fff",
     slides: [
-      { src: musicimage2, link: "https://dribbble.com/shots/24079544-Music-Streaming-App" },
-      { src: musicimage2, link: "#" },
-      { src: musicimage2, link: "#" },
+      { src: vizibl1, link: "https://www.vizibl.ai/" },
+      { src: vizibl2, link: "https://www.vizibl.ai/platform/" },
+      { src: vizibl3, link: "https://www.vizibl.ai/capabilities/" },
+      { src: vizibl4, link: "https://www.vizibl.ai/igaming-advertising/" },
     ]
   },
   {
@@ -62,14 +68,14 @@ const projects = [
       { src: ecomimage5, link: "#" },
     ]
   },
-  {
-    id: "06", title: "Design Recreation", category: "App Design", bgColor: "#10b981", textColor: "#fff",
-    slides: [
-      { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
-      { src: designimage6, link: "#" },
-      { src: designimage6, link: "#" },
-    ]
-  },
+  // {
+  //   id: "06", title: "Design Recreation", category: "App Design", bgColor: "#10b981", textColor: "#fff",
+  //   slides: [
+  //     { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
+  //     { src: designimage6, link: "#" },
+  //     { src: designimage6, link: "#" },
+  //   ]
+  // },
 ];
 
 // Magnetic View Button
@@ -248,7 +254,7 @@ const ProjectCard = ({ project, i, total, activeFloat, setActiveProject }) => {
           <MagneticViewBtn onClick={() => setActiveProject(project)} />
           <span style={{
             fontSize: "clamp(90px, 14vw, 200px)",
-            fontWeight: 950, opacity: 0.08,
+            fontWeight: 950, opacity: 30,
             lineHeight: 0.8, letterSpacing: "-8px",
             color: "#fff",
             fontFamily: "'Inter', sans-serif"
@@ -260,10 +266,10 @@ const ProjectCard = ({ project, i, total, activeFloat, setActiveProject }) => {
         {/* Right: Image Frame */}
         <div style={{
           position: "relative",
-          borderRadius: "24px",
+          borderRadius: "10px",
           overflow: "hidden",
           alignSelf: "stretch",
-          minHeight: "320px",
+          minHeight: "400px",
           boxShadow: "0 25px 60px rgba(0,0,0,0.6)",
           zIndex: 2,
         }}>
@@ -279,7 +285,7 @@ const ProjectCard = ({ project, i, total, activeFloat, setActiveProject }) => {
         </div>
 
         {/* Footer */}
-        <div style={{
+        {/* <div style={{
           gridColumn: "1 / -1",
           display: "flex", justifyContent: "space-between", alignItems: "center",
           paddingTop: "20px",
@@ -293,7 +299,7 @@ const ProjectCard = ({ project, i, total, activeFloat, setActiveProject }) => {
           <span style={{ fontSize: "14px", opacity: 0.5, fontWeight: 700 }}>
             {project.id} / {String(total).padStart(2, "0")}
           </span>
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );
@@ -335,17 +341,12 @@ const RecentWorks = () => {
         padding: "0 24px",
       }}>
         {/* Label */}
-        <p
+        <h2
           ref={titleRef}
-          className={`anim-fade-down ${titleIn ? "anim-in" : ""}`}
-          style={{
-            fontSize: "12px", fontWeight: 800, letterSpacing: "8px",
-            color: "#fff", opacity: 0.5, textTransform: "uppercase",
-            margin: "0 0 30px", zIndex: 10,
-          }}
+          className={`text-center text-xl md:text-2xl font-bold text-violet-400 mb-12 anim-fade-down ${titleIn ? "anim-in" : ""}`}
         >
           My Recent Works
-        </p>
+        </h2>
 
         {/* Deck Container */}
         <div style={{
