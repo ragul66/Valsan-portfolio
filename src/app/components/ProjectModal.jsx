@@ -205,17 +205,55 @@ const ProjectModal = ({ project, onClose }) => {
         .pm-thumb.active { border-color: #a855f7; opacity: 1; transform: scale(1.12); }
         .pm-thumb:hover:not(.active) { opacity: 0.75; }
 
-        .pm-link {
-          display: inline-flex; align-items: center; gap: 6px;
-          background: #7c3aed; color: #fff;
-          border: none; border-radius: 8px;
-          padding: 9px 16px; font-size: 11px; font-weight: 700;
-          letter-spacing: 1px; text-transform: uppercase;
-          cursor: pointer; text-decoration: none;
-          transition: background 0.2s, transform 0.2s;
-          white-space: nowrap; flex-shrink: 0;
+        .pm-actions {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding: 20px 24px;
+          align-items: center;
+          background: #0c0c0c;
+          border-top: 1px solid rgba(255,255,255,0.06);
         }
-        .pm-link:hover { background: #6d28d9; transform: scale(1.04); }
+
+        .pm-btn {
+          width: 100%;
+          max-width: 320px;
+          height: 48px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          border-radius: 12px;
+          font-size: 13px;
+          font-weight: 800;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          cursor: pointer;
+          text-decoration: none;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .pm-btn.primary {
+          background: #fff;
+          color: #000;
+          border: 1px solid #fff;
+        }
+        .pm-btn.primary:hover {
+          background: #e0e0e0;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        .pm-btn.secondary {
+          background: transparent;
+          color: #fff;
+          border: 1px solid rgba(255,255,255,0.2);
+        }
+        .pm-btn.secondary:hover {
+          background: rgba(255,255,255,0.05);
+          border-color: rgba(255,255,255,0.5);
+          transform: translateY(-3px);
+        }
 
         @media (max-width: 600px) {
           .pm-img-area { min-height: 260px; }
@@ -223,6 +261,7 @@ const ProjectModal = ({ project, onClose }) => {
           .pm-footer { flex-wrap: wrap; padding: 10px 16px 14px; }
           .pm-thumbs { display: none; }
           .pm-header { padding: 14px 16px 12px; }
+          .pm-btn { max-width: 100%; }
         }
       `}</style>
 
@@ -243,12 +282,11 @@ const ProjectModal = ({ project, onClose }) => {
           {/* Image */}
           <div className="pm-img-area">
             <div
-              className={`pm-img-inner${
-                sliding === "right" ? " exit-left"
-                : sliding === "left"  ? " exit-right"
-                : !sliding && current >= 0 ? " enter-left"
-                : ""
-              }`}
+              className={`pm-img-inner${sliding === "right" ? " exit-left"
+                : sliding === "left" ? " exit-right"
+                  : !sliding && current >= 0 ? " enter-left"
+                    : ""
+                }`}
             >
               <Image
                 src={currentSlide.src}
@@ -260,7 +298,6 @@ const ProjectModal = ({ project, onClose }) => {
                 priority
               />
             </div>
-
             {slides.length > 1 && (
               <>
                 <button className="pm-nav left" onClick={() => go("left")} aria-label="Previous">
@@ -273,8 +310,18 @@ const ProjectModal = ({ project, onClose }) => {
             )}
           </div>
 
+          {/* Action Buttons */}
+          <div className="pm-actions">
+            <a href={currentSlide.link} target="_blank" rel="noopener noreferrer" className="pm-btn primary">
+              View Site <ExternalLink size={14} />
+            </a>
+            <a href={currentSlide.link} target="_blank" rel="noopener noreferrer" className="pm-btn secondary">
+              View Project Details <ExternalLink size={14} />
+            </a>
+          </div>
+
           {/* Footer */}
-          <div className="pm-footer">
+          {/* <div className="pm-footer">
             <span className="pm-counter">
               <b>{String(current + 1).padStart(2, "0")}</b>
               {" / "}
@@ -302,7 +349,7 @@ const ProjectModal = ({ project, onClose }) => {
             <a href={currentSlide.link} target="_blank" rel="noopener noreferrer" className="pm-link">
               Dribbble <ExternalLink size={12} />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
