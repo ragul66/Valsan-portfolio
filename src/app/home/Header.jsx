@@ -157,6 +157,28 @@ const Header = () => {
             </button>
           </div>
         </div>
+
+        {/* Bottom Info Row: Bio + Status Badges */}
+        <div className="hero-bottom-info">
+          <div className="hero-bio">
+            <p>
+              Bangalore based UI/UX Designer. Crafting intuitive digital experiences
+              and visual stories for modern brands across all platforms.
+            </p>
+          </div>
+          <div className="hero-status-badges">
+            <div className="status-badge available">
+              <span className="status-dot"></span>
+              AVAILABLE FOR WORK
+            </div>
+            <div className="status-badge">
+              BANGALORE, INDIA
+            </div>
+            <div className="status-badge">
+              UI/UX & WEB DESIGN
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ── Profile Image (absolute, right side) ── */}
@@ -331,10 +353,81 @@ const Header = () => {
           z-index: 5;
           width: 100%;
           max-width: 1280px;
+          height: 100vh;
           margin: 0 auto;
-          padding: 100px 80px 60px 80px;
+          padding: 100px 80px 40px 80px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+
+        /* ── Bottom Info Row ── */
+        .hero-bottom-info {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          width: 100%;
+          margin-top: auto;
+          padding-bottom: 20px;
+          animation: fadeInUp 1s ease both 0.4s;
+        }
+
+        .hero-bio {
+          max-width: 400px;
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 15px;
+          line-height: 1.6;
+          font-weight: 400;
+          padding-left: 6px;
+        }
+
+        .hero-status-badges {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 10px;
+          padding-left: 44px;
+        }
+
+        .status-badge {
           display: flex;
           align-items: center;
+          gap: 10px;
+          padding: 6px 14px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 100px;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          background: rgba(255, 255, 255, 0.03);
+          transition: all 0.3s ease;
+        }
+
+        .status-badge:hover {
+          border-color: rgba(168, 85, 247, 0.4);
+          background: rgba(168, 85, 247, 0.05);
+        }
+
+        .status-badge.available {
+          color: #4ade80;
+          border-color: rgba(74, 222, 128, 0.2);
+        }
+
+        .status-dot {
+          width: 8px;
+          height: 8px;
+          background-color: #4ade80;
+          border-radius: 50%;
+          box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.5); opacity: 0.5; }
+          100% { transform: scale(1); opacity: 1; }
         }
 
         /* ── Text Block ── */
@@ -468,7 +561,11 @@ const Header = () => {
             padding: 100px 60px 60px 60px;
           }
           .hero-text {
-            max-width: 55%;
+            max-width: 60%;
+          }
+          .hero-bio {
+            max-width: 320px;
+            font-size: 14px;
           }
           .hero-image-wrap {
             width: 48%;
@@ -489,6 +586,19 @@ const Header = () => {
             align-items: center;
             text-align: center;
             width: 100%;
+          }
+          .hero-bottom-info {
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            margin-top: 40px;
+          }
+          .hero-bio {
+            max-width: 100%;
+            text-align: center;
+          }
+          .hero-status-badges {
+            align-items: center;
           }
           .hero-text {
             max-width: 100%;

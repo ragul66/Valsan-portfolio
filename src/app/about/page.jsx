@@ -76,8 +76,8 @@ export default function AboutSection() {
         /* Section is tall enough to scroll through all words */
         .about-section {
           background: #050505;
-          /* height = viewport + scrolling room for all words */
-          height: calc(100vh + 280vh);
+          /* Reduced height to make text reveal faster */
+          height: calc(100vh + 150vh);
           position: relative;
           font-family: 'Inter', 'Helvetica Neue', sans-serif;
         }
@@ -167,7 +167,7 @@ export default function AboutSection() {
 
         @media (max-width: 768px) {
           .about-card { padding: 40px 24px; }
-          .about-section { height: calc(100vh + 320vh); }
+          .about-section { height: calc(100vh + 200vh); }
         }
         @media (max-width: 480px) {
           .about-sticky { padding: 70px 16px; }

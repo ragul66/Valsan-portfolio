@@ -17,9 +17,19 @@ import vizibl2 from "../../../public/vizibl/vizibl2.png";
 import vizibl3 from "../../../public/vizibl/vizibl3.png";
 import vizibl4 from "../../../public/vizibl/vizibl4.png";
 
+import Mediawrkz1 from "../../../public/mediawrkz/mediawrkz1.png";
+import Mediawrkz2 from "../../../public/mediawrkz/mediawrkz2.png";
+import Mediawrkz3 from "../../../public/mediawrkz/mediawrkz3.png";
+
+import jove1 from "../../../public/jove/jove1.png";
+import jove2 from "../../../public/jove/jove2.png";
+import jove3 from "../../../public/jove/jove3.png";
+
+import uday1 from "../../../public/uday/uday1.png";
 
 
-import fitnessimage3 from "../../../public/myprojects/fitnessimage3.png";
+
+
 import foodimage4 from "../../../public/myprojects/fooddeleiveryimage4.png";
 import ecomimage5 from "../../../public/myprojects/ecommerceimage5.png";
 // import designimage6 from "../../../public/myprojects/designimage6.png";
@@ -45,27 +55,25 @@ const projects = [
     ]
   },
   {
-    id: "03", title: "Fitness App", category: "App Design", bgColor: "#8b5cf6", textColor: "#fff",
+    id: "03", title: "MediaWrkz", category: "App Design", bgColor: "#1025a2", textColor: "#fff",
     slides: [
-      { src: fitnessimage3, link: "https://dribbble.com/shots/23999535-Fitness-Application-Design" },
-      { src: fitnessimage3, link: "#" },
-      { src: fitnessimage3, link: "#" },
+      { src: Mediawrkz1, link: "https://www.mediawrkz.com/highr-yield/" },
+      { src: Mediawrkz2, link: "https://www.mediawrkz.com/highr-sdk/" },
+      { src: Mediawrkz3, link: "https://www.mediawrkz.com/" },
     ]
   },
   {
-    id: "04", title: "Food Delivery", category: "App Design", bgColor: "#f97316", textColor: "#fff",
+    id: "04", title: "Jove", category: "App Design", bgColor: "#1a6bbf", textColor: "#fff",
     slides: [
-      { src: foodimage4, link: "https://dribbble.com/shots/23982882-Food-Delivery-Application" },
-      { src: foodimage4, link: "#" },
-      { src: foodimage4, link: "#" },
+      { src: jove1, link: "https://coach.jove.com/pp/ailearning-lp" },
+      { src: jove2, link: "https://coach.jove.com/pp/physics" },
+      { src: jove3, link: "https://coach.jove.com/pp/biology" },
     ]
   },
   {
-    id: "05", title: "Ecommerce Mobile", category: "App Design", bgColor: "#0ea5e9", textColor: "#fff",
+    id: "05", title: "Dr. Uday", category: "App Design", bgColor: "#615efc", textColor: "#fff",
     slides: [
-      { src: ecomimage5, link: "https://dribbble.com/shots/23618174-Ecommerce-app-for-Mobile-devices" },
-      { src: ecomimage5, link: "#" },
-      { src: ecomimage5, link: "#" },
+      { src: uday1, link: "https://www.drudayravi.com/" },
     ]
   },
   // {
@@ -84,10 +92,18 @@ const MagneticViewBtn = ({ onClick }) => {
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e) => {
-    const rect = btnRef.current.getBoundingClientRect();
-    const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.3;
-    const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.3;
-    setPos({ x: dx, y: dy });
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = btnRef.current.getBoundingClientRect();
+
+    // Calculate distance from center for a "magnetic" pull
+    const x = (clientX - (left + width / 2)) * 0.35;
+    const y = (clientY - (top + height / 2)) * 0.35;
+
+    setPos({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setPos({ x: 0, y: 0 });
   };
 
   return (
@@ -95,26 +111,46 @@ const MagneticViewBtn = ({ onClick }) => {
       ref={btnRef}
       onClick={onClick}
       onMouseMove={handleMouseMove}
-      onMouseLeave={() => setPos({ x: 0, y: 0 })}
+      onMouseLeave={handleMouseLeave}
       style={{
-        display: "inline-flex", alignItems: "center", gap: "6px",
-        padding: "10px 24px", borderRadius: "10px",
-        fontSize: "12px", fontWeight: 800, letterSpacing: "2px",
-        textTransform: "uppercase", color: "#fff", cursor: "pointer",
-        border: "1px solid rgba(255,255,255,0.7)",
-        background: "transparent",
-        backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
-        transform: `translate(${pos.x}px, ${pos.y}px)`,
-        transition: "transform 0.12s ease, background 0.2s ease, color 0.2s ease",
+        // Layout & Sizing
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "8px",
+        padding: "12px 28px",
+        borderRadius: "12px",
         width: "fit-content",
-        alignSelf: "flex-start",
+        cursor: "pointer",
+
+        // Typography
+        fontSize: "12px",
+        fontWeight: 800,
+        letterSpacing: "2.5px",
+        textTransform: "uppercase",
+        color: "#fff",
+
+        // Visuals: Glassmorphism & Borders
+        background: "rgba(255, 255, 255, 0.05)",
+        border: "1px solid rgba(255, 255, 255, 0.3)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+
+        // Animation & Movement
+        transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
+        transition: "transform 0.15s cubic-bezier(0.23, 1, 0.32, 1), background 0.3s, box-shadow 0.3s, color 0.3s",
+
+        // The "Fancy" Glow Shadow (Default)
+        boxShadow: "0 0 0px rgba(255, 255, 255, 0)",
       }}
+      // Interactive Hover States
       onMouseEnter={(e) => {
         e.currentTarget.style.background = "#fff";
         e.currentTarget.style.color = "#000";
+        e.currentTarget.style.boxShadow = "0 0 25px 5px rgba(255, 255, 255, 0.4)";
       }}
     >
-      <Eye size={16} /> VIEW
+      <Eye size={16} strokeWidth={2.5} />
+      <span>View</span>
     </button>
   );
 };
