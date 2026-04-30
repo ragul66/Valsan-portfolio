@@ -158,77 +158,41 @@ const MagneticViewBtn = ({ onClick }) => {
 const ProjectCard = ({ project, i, total, activeFloat, setActiveProject }) => {
   // Use pure reactive functions to compute the Deck Shuffle mechanics
 
-  // 1. Horizontal constraint (no lateral swing, stays centered)
+  // 1. Horizontal constraint
   const x = useTransform(activeFloat, () => "0%");
 
-  // 2. Rotational flip backwards (Up and over)
-  const rotateX = useTransform(activeFloat, (val) => {
-    const diff = i - val;
-    if (diff >= 0) return "0deg";
-    if (diff < 0 && diff > -1) {
-      // As it flies up and behind, tilt it backwards into the screen
-      const rot = 180 * diff * (diff + 1); // peaks at -45deg
-      return `${rot}deg`;
-    }
-    return "0deg";
-  });
+  // 2. No rotation for the clean stack effect
+  const rotateX = useTransform(activeFloat, () => "0deg");
 
-  // 3. Vertical depth cascading + upward arc
+  // 3. Vertical sliding from bottom, and staying slightly up when pushed back
   const y = useTransform(activeFloat, (val) => {
     const diff = i - val;
-    if (diff >= 0) {
-      return `${diff * 28}px`;
+    if (diff > 0) {
+      // Coming from bottom
+      return `${diff * 120}%`;
     }
-    if (diff < 0 && diff > -1) {
-      // Move to back pile linearly, but arc heavily upwards out of view
-      const finalY = (total - 1) * 28;
-      const progress = -diff;
-      const linearY = progress * finalY;
-      // Arc going upwards: peak at -0.5 reaches approx -120%
-      const arcPercent = 480 * diff * (diff + 1); // 480 * -0.25 = -120%
-      return `calc(${linearY}px + ${arcPercent}%)`;
-    }
-    const virtualDiff = total + diff;
-    return `${virtualDiff * 28}px`;
+    // Pushed back: slight move upwards
+    return `calc(${diff * 40}px)`;
   });
 
-  // 4. Scale reduction for depth illusion
+  // 4. Scale down when pushed back
   const scale = useTransform(activeFloat, (val) => {
     const diff = i - val;
-    if (diff >= 0) return 1 - diff * 0.04;
-    if (diff < 0 && diff > -1) {
-      // Dip scale aggressively while flipping over
-      const arc = -0.15 * Math.sin(Math.PI * -diff);
-      const progress = -diff;
-      const linearScale = 1 - progress * ((total - 1) * 0.04);
-      return linearScale + arc;
-    }
-    const virtualDiff = total + diff;
-    return 1 - virtualDiff * 0.04;
+    if (diff > 0) return 1;
+    // Shrink smoothly
+    return 1 + diff * 0.04;
   });
 
-  // 5. Opacity dimming towards the bottom of the deck
+  // 5. Opacity dimming when pushed back
   const opacity = useTransform(activeFloat, (val) => {
     const diff = i - val;
-    if (diff >= 0) return Math.max(0, 1 - diff * 0.15);
-    if (diff < 0 && diff > -1) {
-      const progress = -diff;
-      return Math.max(0, 1 - progress * ((total - 1) * 0.15));
-    }
-    const virtualDiff = total + diff;
-    return Math.max(0, 1 - virtualDiff * 0.15);
+    if (diff > 0) return 1;
+    // Fade out slightly to create depth shadow
+    return 1 + diff * 0.4;
   });
 
-  // 6. Dynamic Z-Index for safe 3D traversal clipping
-  const zIndex = useTransform(activeFloat, (val) => {
-    const diff = i - val;
-    if (diff >= 0) return 100 - i;
-    // VERY IMPORTANT: Card must retain its high Z-index while swinging OUT (First half of animation).
-    // Once clear of the stack (-0.5), it drops Z-index immediately so it swings IN behind everything.
-    if (diff >= -0.5) return 100 - i;
-    if (diff >= -1) return 0;
-    return 100 - (total + i);
-  });
+  // 6. Z-Index: newer cards render on top
+  const zIndex = i;
 
   return (
     <motion.div
@@ -241,25 +205,17 @@ const ProjectCard = ({ project, i, total, activeFloat, setActiveProject }) => {
         rotateX,
         opacity,
         zIndex,
-        willChange: "transform, opacity, z-index",
-        transformOrigin: "bottom center", // Anchor rotation to bottom gives heavy satisfying deck feel
+        willChange: "transform, opacity",
+        transformOrigin: "top center", // Anchor rotation/scale to top gives satisfying stack feel
         borderRadius: "32px",
         overflow: "hidden",
-        boxShadow: "0 -5px 40px rgba(0,0,0,0.6), 0 30px 60px rgba(0,0,0,0.8)",
+        boxShadow: "0 -20px 50px rgba(0,0,0,0.5), 0 30px 60px rgba(0,0,0,0.8)",
         border: "1px solid rgba(255,255,255,0.08)",
       }}
     >
-      <div style={{
+      <div className="project-card-inner" style={{
         backgroundColor: project.bgColor,
         color: project.textColor,
-        borderRadius: "36px",
-        padding: "clamp(36px, 5vw, 75px)",
-        height: "100%",
-        display: "grid",
-        gridTemplateColumns: "1fr 1.3fr",
-        gridTemplateRows: "auto 1fr auto",
-        gap: "0",
-        position: "relative",
       }}>
         {/* Deep premium aesthetic background noise/grid optional here */}
         <div style={{
@@ -270,50 +226,25 @@ const ProjectCard = ({ project, i, total, activeFloat, setActiveProject }) => {
         }} />
 
         {/* Title */}
-        <h3 style={{
-          gridColumn: "1 / -1",
-          fontSize: "clamp(36px, 5vw, 84px)",
-          fontWeight: 900, lineHeight: 0.9,
-          margin: "0 0 20px", letterSpacing: "-2px",
-          position: "relative", zIndex: 2
-        }}>
+        <h3 className="project-card-title">
           {project.title}
         </h3>
 
         {/* Left: View + Number */}
-        <div style={{
-          display: "flex", flexDirection: "column",
-          justifyContent: "flex-end", gap: "20px",
-          paddingBottom: "10px",
-          position: "relative", zIndex: 2
-        }}>
+        <div className="project-card-left">
           <MagneticViewBtn onClick={() => setActiveProject(project)} />
-          <span style={{
-            fontSize: "clamp(90px, 14vw, 200px)",
-            fontWeight: 950, opacity: 30,
-            lineHeight: 0.8, letterSpacing: "-8px",
-            color: "#fff",
-            fontFamily: "'Inter', sans-serif"
-          }}>
+          <span className="project-card-number">
             {project.id}
           </span>
         </div>
 
         {/* Right: Image Frame */}
-        <div style={{
-          position: "relative",
-          borderRadius: "10px",
-          overflow: "hidden",
-          alignSelf: "stretch",
-          minHeight: "400px",
-          boxShadow: "0 25px 60px rgba(0,0,0,0.6)",
-          zIndex: 2,
-        }}>
+        <div className="project-card-right">
           <Image
             src={project.slides[0].src}
             alt={project.title}
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "cover", objectPosition: "top" }}
             placeholder="blur"
             sizes="(max-width: 768px) 90vw, 45vw"
             priority={i < 2}
@@ -409,6 +340,86 @@ const RecentWorks = () => {
           <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
         )}
       </AnimatePresence>
+      <style>{`
+        .project-card-inner {
+          border-radius: 36px;
+          padding: clamp(36px, 5vw, 75px);
+          height: 100%;
+          display: grid;
+          grid-template-columns: 1fr 1.3fr;
+          grid-template-rows: auto 1fr auto;
+          gap: 0;
+          position: relative;
+        }
+        .project-card-title {
+          grid-column: 1 / -1;
+          font-size: clamp(36px, 5vw, 84px);
+          font-weight: 900;
+          line-height: 0.9;
+          margin: 0 0 20px;
+          letter-spacing: -2px;
+          position: relative;
+          z-index: 2;
+        }
+        .project-card-left {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          gap: 20px;
+          padding-bottom: 10px;
+          position: relative;
+          z-index: 2;
+        }
+        .project-card-number {
+          font-size: clamp(90px, 14vw, 200px);
+          font-weight: 950;
+          opacity: 0.7;
+          line-height: 0.8;
+          letter-spacing: -8px;
+          color: #fff;
+          font-family: 'Inter', sans-serif;
+        }
+        .project-card-right {
+          position: relative;
+          border-radius: 10px;
+          overflow: hidden;
+          align-self: stretch;
+          min-height: 400px;
+          box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+          z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+          .project-card-inner {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr auto;
+            padding: 24px;
+            gap: 20px;
+          }
+          .project-card-title {
+            font-size: clamp(32px, 10vw, 48px);
+            margin-bottom: 0px;
+          }
+          .project-card-left {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0px;
+            gap: 12px;
+            grid-row: 3;
+          }
+          .project-card-number {
+            font-size: clamp(60px, 15vw, 80px);
+            line-height: 0.8;
+            letter-spacing: -4px;
+          }
+          .project-card-right {
+            grid-row: 2;
+            min-height: 280px;
+            border-radius: 20px;
+          }
+        }
+      `}</style>
     </div>
   );
 };

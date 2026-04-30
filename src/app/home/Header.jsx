@@ -162,8 +162,8 @@ const Header = () => {
         <div className="hero-bottom-info">
           <div className="hero-bio">
             <p>
-              Bangalore based UI/UX Designer. Crafting intuitive digital experiences
-              and visual stories for modern brands across all platforms.
+              A passionate UI/UX Designer crafting intuitive digital experiences
+              and visual stories. Dedicated to building user-centric, pixel-perfect designs for modern brands.
             </p>
           </div>
           <div className="hero-status-badges">
@@ -375,18 +375,19 @@ const Header = () => {
 
         .hero-bio {
           max-width: 400px;
-          color: rgba(255, 255, 255, 0.6);
+          color: rgba(255, 255, 255, 0.7);
           font-size: 15px;
           line-height: 1.6;
           font-weight: 400;
-          padding-left: 6px;
+          padding-left: 16px;
+          border-left: 2px solid rgba(168, 85, 247, 0.6);
         }
 
         .hero-status-badges {
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          gap: 10px;
+          gap: 12px;
           padding-left: 44px;
         }
 
@@ -394,25 +395,32 @@ const Header = () => {
           display: flex;
           align-items: center;
           gap: 10px;
-          padding: 6px 14px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 8px 16px;
+          border: 1px solid rgba(255, 255, 255, 0.15);
           border-radius: 100px;
-          color: rgba(255, 255, 255, 0.8);
+          color: rgba(255, 255, 255, 0.9);
           font-size: 11px;
           font-weight: 700;
-          letter-spacing: 1px;
-          background: rgba(255, 255, 255, 0.03);
+          letter-spacing: 1.5px;
+          background: rgba(0, 0, 0, 0.5);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           transition: all 0.3s ease;
+          position: relative;
+          z-index: 10;
         }
 
         .status-badge:hover {
-          border-color: rgba(168, 85, 247, 0.4);
-          background: rgba(168, 85, 247, 0.05);
+          border-color: rgba(168, 85, 247, 0.6);
+          background: rgba(168, 85, 247, 0.2);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(168, 85, 247, 0.15);
         }
 
         .status-badge.available {
           color: #4ade80;
-          border-color: rgba(74, 222, 128, 0.2);
+          border-color: rgba(74, 222, 128, 0.3);
+          background: rgba(0, 0, 0, 0.6);
         }
 
         .status-dot {
@@ -578,27 +586,43 @@ const Header = () => {
           .hero-section {
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            min-height: -webkit-fill-available;
           }
           .hero-content {
-            padding: 90px 24px 0 24px;
+            padding: 100px 24px 0 24px;
             flex-direction: column;
             align-items: center;
             text-align: center;
             width: 100%;
+            height: 100%;
+            justify-content: flex-start;
           }
           .hero-bottom-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             flex-direction: column;
             align-items: center;
-            gap: 24px;
-            margin-top: 40px;
+            gap: 20px;
+            padding: 40px 24px 24px 24px;
+            background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.7) 50%, transparent 100%);
+            z-index: 10;
+            margin-top: 0;
           }
           .hero-bio {
             max-width: 100%;
             text-align: center;
+            padding-left: 0;
+            border-left: none;
           }
           .hero-status-badges {
             align-items: center;
+            padding-left: 0;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
           }
           .hero-text {
             max-width: 100%;
@@ -619,21 +643,23 @@ const Header = () => {
           }
           .hero-cta {
             justify-content: center;
+            margin-top: 20px;
           }
-          /* Image: pull out of absolute, sit below text */
+          /* Image: absolute at bottom center */
           .hero-image-wrap {
-            position: relative;
-            right: unset;
-            top: unset;
-            bottom: unset;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
             width: 100%;
-            height: 75vw;
-            max-height: 560px;
+            height: 65vh;
+            max-height: 650px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            pointer-events: auto;
-            margin-top: 16px;
+            pointer-events: none;
+            z-index: 3;
+            margin-top: 0;
           }
           .hero-image-inner {
             height: 100%;
@@ -641,10 +667,13 @@ const Header = () => {
             display: flex;
             align-items: flex-end;
             justify-content: center;
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
           }
           .hero-image {
             height: 100% !important;
             width: auto !important;
+            object-fit: contain;
             object-position: bottom;
           }
           .right-sidebar { display: none; }
@@ -664,8 +693,8 @@ const Header = () => {
             font-size: 13px;
           }
           .hero-image-wrap {
-            height: 80vw;
-            max-height: 420px;
+            height: 60vh;
+            max-height: 500px;
           }
         }
       `}</style>
