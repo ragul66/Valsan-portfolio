@@ -139,6 +139,13 @@ const Header = () => {
             <h2 className="headline-outlined">Designer</h2>
           </div>
 
+          <div className="hero-bio">
+            <p>
+              A passionate UI/UX Designer crafting intuitive digital experiences
+              and visual stories. Dedicated to building user-centric, pixel-perfect designs for modern brands.
+            </p>
+          </div>
+
           {/* CTA */}
           <div className="hero-cta">
             <svg width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.7 }}>
@@ -158,14 +165,8 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Bottom Info Row: Bio + Status Badges */}
+        {/* Bottom Info Row: Status Badges */}
         <div className="hero-bottom-info">
-          <div className="hero-bio">
-            <p>
-              A passionate UI/UX Designer crafting intuitive digital experiences
-              and visual stories. Dedicated to building user-centric, pixel-perfect designs for modern brands.
-            </p>
-          </div>
           <div className="hero-status-badges">
             <div className="status-badge available">
               <span className="status-dot"></span>
@@ -365,7 +366,7 @@ const Header = () => {
         /* ── Bottom Info Row ── */
         .hero-bottom-info {
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-start;
           align-items: flex-end;
           width: 100%;
           margin-top: auto;
@@ -374,21 +375,21 @@ const Header = () => {
         }
 
         .hero-bio {
-          max-width: 400px;
-          color: rgba(255, 255, 255, 0.7);
-          font-size: 15px;
+          max-width: 440px;
+          color: rgba(255, 255, 255, 0.65);
+          font-size: 14px;
           line-height: 1.6;
           font-weight: 400;
-          padding-left: 16px;
-          border-left: 2px solid rgba(168, 85, 247, 0.6);
+          margin-top: 16px;
+          margin-bottom: 32px;
+          animation: fadeInLeft 1s ease both 0.3s;
         }
 
         .hero-status-badges {
           display: flex;
           flex-direction: column;
-          align-items: flex-end;
+          align-items: flex-start;
           gap: 12px;
-          padding-left: 44px;
         }
 
         .status-badge {
@@ -614,8 +615,8 @@ const Header = () => {
           .hero-bio {
             max-width: 100%;
             text-align: center;
-            padding-left: 0;
-            border-left: none;
+            margin-top: 24px;
+            margin-bottom: 24px;
           }
           .hero-status-badges {
             align-items: center;

@@ -6,7 +6,7 @@ import { Eye } from "lucide-react";
 import ProjectModal from "../components/ProjectModal";
 import useInView from "../hooks/useInView";
 
-import dataworkz1 from "../../../public/datawrkz/datawrkz-home.png";
+import dataworkz1 from "../../../public/datawrkz/datawrkz-home2.png";
 import dataworkz2 from "../../../public/datawrkz/datawrkz2.png";
 import dataworkz3 from "../../../public/datawrkz/datawrkz3.png";
 import dataworkz4 from "../../../public/datawrkz/datawrkz4.png";
