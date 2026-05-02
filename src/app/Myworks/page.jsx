@@ -310,7 +310,15 @@ const RecentWorks = () => {
         {/* Label */}
         <h2
           ref={titleRef}
-          className={`text-center text-xl md:text-2xl font-bold text-violet-400 mb-12 anim-fade-down ${titleIn ? "anim-in" : ""}`}
+          className={`text-center anim-fade-down ${titleIn ? "anim-in" : ""}`}
+          style={{
+            fontSize: "clamp(22px, 4vw, 36px)",
+            fontWeight: 800,
+            color: "#a855f7",
+            letterSpacing: "2px",
+            textTransform: "uppercase",
+            marginBottom: "clamp(20px, 3vh, 48px)",
+          }}
         >
           My Recent Works
         </h2>
@@ -319,7 +327,7 @@ const RecentWorks = () => {
         <div style={{
           position: "relative",
           width: "min(1480px, 96vw)",
-          height: "clamp(620px, 82vh, 880px)",
+          height: "clamp(480px, 78vh, 880px)",
           perspective: "1800px",
         }}>
           {projects.map((project, i) => (
@@ -392,31 +400,47 @@ const RecentWorks = () => {
         @media (max-width: 768px) {
           .project-card-inner {
             grid-template-columns: 1fr;
-            grid-template-rows: auto 1fr auto;
-            padding: 24px;
-            gap: 20px;
+            grid-template-rows: auto auto 1fr;
+            padding: 20px 20px 16px;
+            gap: 12px;
           }
           .project-card-title {
-            font-size: clamp(32px, 10vw, 48px);
-            margin-bottom: 0px;
+            font-size: clamp(28px, 9vw, 44px);
+            margin-bottom: 0;
+            letter-spacing: -1px;
           }
           .project-card-left {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 0px;
+            padding-bottom: 0;
             gap: 12px;
-            grid-row: 3;
+            order: 3;
           }
           .project-card-number {
-            font-size: clamp(60px, 15vw, 80px);
-            line-height: 0.8;
-            letter-spacing: -4px;
+            font-size: clamp(48px, 12vw, 72px);
+            line-height: 1;
+            letter-spacing: -3px;
           }
           .project-card-right {
-            grid-row: 2;
-            min-height: 280px;
-            border-radius: 20px;
+            order: 2;
+            min-height: 0;
+            height: 42vw;
+            max-height: 260px;
+            border-radius: 16px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .project-card-inner {
+            padding: 16px 16px 12px;
+          }
+          .project-card-right {
+            height: 48vw;
+            max-height: 220px;
+          }
+          .project-card-title {
+            font-size: clamp(24px, 8vw, 36px);
           }
         }
       `}</style>

@@ -305,9 +305,16 @@ const EducationExperience = () => {
           .illus-wrap {
             border-right: none;
             border-bottom: 1px solid rgba(168,85,247,0.2);
-            padding: 24px 24px 0;
-            max-height: 220px;
-            overflow: hidden;
+            padding: 16px 16px 0;
+            max-height: 280px;
+            overflow: visible;
+            justify-content: center;
+          }
+          .illus-img {
+            max-height: 260px;
+            width: auto !important;
+            object-fit: contain;
+            object-position: center bottom;
           }
           .content-wrap {
             padding: 28px 24px;

@@ -315,9 +315,9 @@ const ProjectModal = ({ project, onClose }) => {
             <a href={currentSlide.link} target="_blank" rel="noopener noreferrer" className="pm-btn primary">
               View Site <ExternalLink size={14} />
             </a>
-            <a href={currentSlide.link} target="_blank" rel="noopener noreferrer" className="pm-btn secondary">
+            {/* <a href={currentSlide.link} target="_blank" rel="noopener noreferrer" className="pm-btn secondary">
               View Project Details <ExternalLink size={14} />
-            </a>
+            </a> */}
           </div>
 
           {/* Footer */}

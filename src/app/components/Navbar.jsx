@@ -23,10 +23,18 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", check);
   }, []);
 
+  const [scrollY, setScrollY] = useState(0);
+  const [pastHero, setPastHero] = useState(false);
+
   // Scroll effect
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setScrollY(y);
+      setScrolled(y > 20);
+      setPastHero(y > window.innerHeight * 0.85);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -95,11 +103,11 @@ const Navbar = () => {
           top: 0,
           width: "100%",
           zIndex: 50,
-          transition: "background 0.3s ease, border-color 0.3s ease",
-          backgroundColor: scrolled ? "rgba(0,0,0,0.92)" : "rgba(0,0,0,0)",
-          backdropFilter: scrolled ? "blur(14px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
-          borderBottom: scrolled
+          transition: "background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease",
+          backgroundColor: pastHero ? "rgba(0,0,0,0.95)" : scrollY > 20 ? `rgba(0,0,0,${Math.min(scrollY / 80, 0.92).toFixed(2)})` : "rgba(0,0,0,0)",
+          backdropFilter: (pastHero || scrollY > 20) ? "blur(16px)" : "none",
+          WebkitBackdropFilter: (pastHero || scrollY > 20) ? "blur(16px)" : "none",
+          borderBottom: (pastHero || scrollY > 20)
             ? "1px solid rgba(139,92,246,0.25)"
             : "1px solid transparent",
         }}
