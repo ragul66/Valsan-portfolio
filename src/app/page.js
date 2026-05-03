@@ -1,12 +1,10 @@
-import Services from "./Myskills/page";
 import Header from "./home/Header";
 import AboutSection from "./about/page";
-import RecentWorks from "./Myworks/page";
-import EducationExperience from "./Education/page";
-import MyTools from "./Mytools/page";
-import ContactSection from "./contactme/page";
-import Footer from "./components/Footer";
 import MarqueeBanner from "./components/MarqueeBanner";
+import EducationExperience from "./Education/page";
+import RecentWorks from "./Myworks/page";
+import MyTools from "./Mytools/page";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -16,9 +14,7 @@ export default function Home() {
       <MarqueeBanner />
       <EducationExperience />
       <RecentWorks />
-      {/* <Services /> */}
       <MyTools />
-      {/* <ContactSection /> */}
       <Footer />
     </>
   );

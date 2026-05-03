@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import designerIllustration from "../../../public/designer_illustration.png";
 import useInView from "../hooks/useInView";
 
@@ -72,7 +73,14 @@ const EducationExperience = () => {
 
       <div className="edu-container">
         {/* ── Card ── */}
-        <div className={`edu-card anim-scale ${cardIn ? "anim-in" : ""}`} ref={cardRef}>
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className={`edu-card anim-scale ${cardIn ? "anim-in" : ""}`}
+          ref={cardRef}
+        >
           {/* Tab Bar */}
           <div className="tab-bar">
             {TABS.map((tab) => (
@@ -121,7 +129,7 @@ const EducationExperience = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`

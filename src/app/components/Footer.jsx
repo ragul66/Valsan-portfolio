@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import logo from "../../../public/Black and White Minimalist Professional Initial Logo/2-removebg-preview.png";
 import useInView from "../hooks/useInView";
 
@@ -13,7 +14,13 @@ const Footer = () => {
     <footer className="footer-root">
       {/* ── Top: GET IN TOUCH ── */}
       <div className="footer-hero">
-        <h2 ref={headRef} className={`footer-heading anim-fade-up ${headIn ? "anim-in" : ""}`}>GET IN TOUCH</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="footer-heading"
+        >GET IN TOUCH</motion.h2>
 
         <div ref={bodyRef} className="footer-body">
           {/* Left */}

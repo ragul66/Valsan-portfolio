@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import useInView from "../hooks/useInView";
 
 import FigmaIcon      from "../../../public/mytools/figma.png";
@@ -36,8 +37,10 @@ const MyTools = () => {
 
           <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10">
             {tools.map((tool, i) => (
-              <div
+              <motion.div
                 key={tool.id}
+                whileHover={{ y: -8, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className={`flex flex-col items-center text-center anim-scale ${delays[i]} ${gridIn ? "anim-in" : ""}`}
               >
                 <div className="relative w-20 h-20 md:w-28 md:h-28 mb-4 cursor-pointer">
@@ -49,7 +52,7 @@ const MyTools = () => {
                   />
                 </div>
                 <p className="text-sm sm:text-base font-medium">{tool.name}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

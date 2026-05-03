@@ -1,14 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import image from "../../../public/aboutimage.png";
-// import image from "../../../public/aboutimage.jpg"
 
 const ROTATING_WORDS = ["Visual", "Web", "UX"];
 
 const Header = () => {
   const [wordIndex, setWordIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const { scrollY } = useScroll();
+  const imageY = useTransform(scrollY, [0, 1000], [0, -250]);
+  const bgY = useTransform(scrollY, [0, 1000], [0, 120]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,10 +36,11 @@ const Header = () => {
   return (
     <section className="hero-section">
       {/* ── Wavy SVG Background ── */}
-      <svg
+      <motion.svg
         className="hero-bg-svg"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid slice"
+        style={{ y: bgY }}
       >
         {Array.from({ length: 28 }).map((_, i) => (
           <path
@@ -49,7 +53,7 @@ const Header = () => {
         ))}
         <path d="M 900 -50 Q 1000 200 850 500 T 950 900" fill="none" stroke="#a855f7" strokeWidth="1.2" opacity="0.6" />
         <path d="M 950 -50 Q 1050 250 900 550 T 1000 1000" fill="none" stroke="#7c3aed" strokeWidth="0.9" opacity="0.5" />
-      </svg>
+      </motion.svg>
 
       {/* ── Purple glow top-right ── */}
       <div className="hero-glow" />
@@ -184,6 +188,7 @@ const Header = () => {
 
       {/* ── Profile Image (absolute, right side) ── */}
       <div className="hero-image-wrap">
+        <motion.div style={{ y: imageY, width: "100%", height: "100%" }}>
         <div className="hero-image-inner transition-transform duration-500 hover:scale-105">
           <Image
             src={image}
@@ -194,6 +199,7 @@ const Header = () => {
             priority
           />
         </div>
+        </motion.div>
       </div>
 
       {/* ── Styles ── */}
@@ -227,7 +233,7 @@ const Header = () => {
           position: relative;
           min-height: 100vh;
           background-color: #050505;
-          overflow: hidden;
+          overflow: clip;
           display: flex;
           align-items: center;
           font-family: 'Inter', 'Helvetica Neue', sans-serif;
@@ -238,8 +244,10 @@ const Header = () => {
           position: absolute;
           inset: 0;
           width: 100%;
-          height: 100%;
+          height: 120%;
+          top: -10%;
           opacity: 0.18;
+          will-change: transform;
         }
 
         /* ── Purple Glow ── */
@@ -546,7 +554,7 @@ const Header = () => {
           z-index: 4;
           display: flex;
           align-items: flex-end;
-          justify-content: center;
+          justify-content: flex-end;
           pointer-events: none;
           animation: fadeInRight 1s ease both 0.2s;
         }
@@ -556,6 +564,7 @@ const Header = () => {
           height: 100%;
           display: flex;
           align-items: flex-end;
+          justify-content: flex-end;
         }
         .hero-image {
           object-fit: contain;

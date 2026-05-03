@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 const ITEMS = [
   "WEB DESIGN",
@@ -19,7 +20,11 @@ export default function MarqueeBanner({ rotate = -4 }) {
         Outer wrapper: dark background, fixed height — clips the ribbon.
         The ribbon itself is rotated inside, so dark space shows above/below.
       */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         style={{
           width: "100%",
           overflow: "hidden",
@@ -84,7 +89,7 @@ export default function MarqueeBanner({ rotate = -4 }) {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <style>{`
         @keyframes marquee-scroll {

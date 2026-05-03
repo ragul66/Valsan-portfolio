@@ -6,14 +6,18 @@ export const metadata = {
   description: "Designed by Ragul",
 };
 
+import SmoothScroll from "./components/SmoothScroll";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main style={{ animation: "pageLoad 0.6s ease both" }}>
-          {children}
-        </main>
+        <SmoothScroll>
+          <Navbar />
+          <main style={{ animation: "pageLoad 0.6s ease both" }}>
+            {children}
+          </main>
+        </SmoothScroll>
         <style>{`
           @keyframes pageLoad {
             from { opacity: 0; transform: translateY(10px); }
