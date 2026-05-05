@@ -230,7 +230,9 @@ const Header = () => {
 
         /* ── Section ── */
         .hero-section {
-          position: relative;
+          position: sticky;
+          top: 0;
+          z-index: 0;
           min-height: 100vh;
           background-color: #050505;
           overflow: clip;

@@ -73,12 +73,12 @@ export default function AboutSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
 
-        /* Section is tall enough to scroll through all words */
         .about-section {
           background: #050505;
           /* Reduced height to make text reveal faster */
           height: calc(100vh + 150vh);
           position: relative;
+          z-index: 10;
           font-family: 'Inter', 'Helvetica Neue', sans-serif;
         }
 
