@@ -10,12 +10,15 @@ export default function Home() {
   return (
     <>
       <Header />
-      <AboutSection />
-      <MarqueeBanner />
-      <EducationExperience />
-      <RecentWorks />
-      <MyTools />
-      <Footer />
+      <div style={{ position: "relative", zIndex: 10, backgroundColor: "#050505" }}>
+        {/* DO NOT REMOVE THIS DIV: It ensures all content slides OVER the sticky Header! */}
+        <AboutSection />
+        <MarqueeBanner />
+        <EducationExperience />
+        <RecentWorks />
+        <MyTools />
+        <Footer />
+      </div>
     </>
   );
 }

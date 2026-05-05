@@ -549,7 +549,7 @@ const Header = () => {
         /* ── Profile Image ── */
         .hero-image-wrap {
           position: absolute;
-          right: 52px;
+          right: 80px;
           bottom: 0;
           top: 0;
           width: 48%;
@@ -580,7 +580,7 @@ const Header = () => {
           .hero-content { padding: 100px 60px 60px 60px; }
           .hero-text { max-width: 60%; }
           .hero-bio { max-width: 320px; font-size: 14px; }
-          .hero-image-wrap { width: 48%; right: 48px; }
+          .hero-image-wrap { width: 48%; right: 64px; }
         }
 
         /* Tablet/Mobile — image center top, content below */

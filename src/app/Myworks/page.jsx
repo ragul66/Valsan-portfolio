@@ -88,30 +88,9 @@ const projects = [
 
 // Magnetic View Button
 const MagneticViewBtn = ({ onClick }) => {
-  const btnRef = useRef(null);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const { left, top, width, height } = btnRef.current.getBoundingClientRect();
-
-    // Calculate distance from center for a "magnetic" pull
-    const x = (clientX - (left + width / 2)) * 0.35;
-    const y = (clientY - (top + height / 2)) * 0.35;
-
-    setPos({ x, y });
-  };
-
-  const handleMouseLeave = () => {
-    setPos({ x: 0, y: 0 });
-  };
-
   return (
     <button
-      ref={btnRef}
       onClick={onClick}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       style={{
         // Layout & Sizing
         display: "inline-flex",
@@ -135,9 +114,8 @@ const MagneticViewBtn = ({ onClick }) => {
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
 
-        // Animation & Movement
-        transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
-        transition: "transform 0.15s cubic-bezier(0.23, 1, 0.32, 1), background 0.3s, box-shadow 0.3s, color 0.3s",
+        // Animation
+        transition: "background 0.3s, box-shadow 0.3s, color 0.3s",
 
         // The "Fancy" Glow Shadow (Default)
         boxShadow: "0 0 0px rgba(255, 255, 255, 0)",
@@ -244,7 +222,7 @@ const ProjectCard = ({ project, i, total, activeFloat, setActiveProject }) => {
             src={project.slides[0].src}
             alt={project.title}
             fill
-            style={{ objectFit: "cover", objectPosition: "top" }}
+            className="project-image"
             placeholder="blur"
             sizes="(max-width: 768px) 90vw, 45vw"
             priority={i < 2}
@@ -324,10 +302,9 @@ const RecentWorks = () => {
         </h2>
 
         {/* Deck Container */}
-        <div style={{
+        <div className="deck-container" style={{
           position: "relative",
           width: "min(1480px, 96vw)",
-          height: "clamp(520px, 82vh, 880px)",
           perspective: "1800px",
         }}>
           {projects.map((project, i) => (
@@ -397,6 +374,14 @@ const RecentWorks = () => {
           z-index: 2;
         }
 
+        .deck-container {
+          height: clamp(520px, 82vh, 880px);
+        }
+        .project-image {
+          object-fit: cover !important;
+          object-position: top !important;
+        }
+
         @media (max-width: 1024px) {
           .project-card-inner {
             padding: clamp(24px, 4vw, 48px);
@@ -441,6 +426,13 @@ const RecentWorks = () => {
             font-size: clamp(44px, 11vw, 64px);
             line-height: 1;
             letter-spacing: -3px;
+          }
+          .deck-container {
+            height: 65vh;
+          }
+          .project-image {
+            object-fit: contain !important;
+            object-position: center !important;
           }
         }
 
