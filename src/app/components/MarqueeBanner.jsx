@@ -28,7 +28,7 @@ export default function MarqueeBanner({ rotate = -4 }) {
         style={{
           width: "100%",
           overflow: "hidden",
-          height: "140px",
+          height: "160px",
           background: "#050505",    /* matches dark page background */
           position: "relative",
           display: "flex",
@@ -39,8 +39,8 @@ export default function MarqueeBanner({ rotate = -4 }) {
         <div
           style={{
             position: "absolute",
-            left: "-10%",
-            right: "-10%",
+            left: "-30%",
+            right: "-30%",
             top: "50%",
             transform: `translateY(-50%) rotate(${rotate}deg)`,
             background: "#f0eaf8",

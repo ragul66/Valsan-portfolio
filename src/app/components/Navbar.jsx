@@ -56,8 +56,8 @@ const Navbar = () => {
     { title: "Home", href: "/" },
     { title: "About Me", href: "/about" },
     { title: "Works", href: "/Myworks" },
-    { title: "Skills", href: "/Myskills" },
-    { title: "Contact", href: "/contactme" },
+    // { title: "Skills", href: "/Myskills" },
+    { title: "Contact", href: "/" },
   ];
 
   const handleDownload = () => {
