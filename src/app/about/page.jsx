@@ -121,15 +121,14 @@ export default function AboutSection() {
         .about-card::after {
           content: '';
           position: absolute;
-          width: 20px;
-          height: 20px;
+          width: 32px;
+          height: 32px;
           border-color: #a855f7;
           border-style: solid;
-          border-radius: 3px;
           opacity: 0.5;
         }
-        .about-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
-        .about-card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+        .about-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; border-radius: 20px 0 0 0; }
+        .about-card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; border-radius: 0 0 20px 0; }
 
         /* SVG top image */
         .about-svg-wrap {
