@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import designerIllustration from "../../../public/designer_illustration.png";
+import experienceIllustration from "../../../public/Experience.png";
+import educationIllustration from "../../../public/Education.jpeg";
+import skillsIllustration from "../../../public/skills.jpeg";
 import useInView from "../hooks/useInView";
 
 const experience = [
@@ -41,6 +43,8 @@ const TABS = [
     description:
       "Designed Websites, Social Media Visuals, And A Mobile App, Focusing On UI/UX For Web Apps With Tools Like Figma, Photoshop, InDesign, And After Effects.",
     items: experience,
+    image: experienceIllustration,
+    alt: "Designer working at desk",
   },
   {
     id: "education",
@@ -49,6 +53,8 @@ const TABS = [
     description:
       "Earned a Bachelor's degree in Computer Science & Business Systems, building a strong foundation in technology, design thinking, and digital product development.",
     items: education,
+    image: educationIllustration,
+    alt: "Student studying at desk",
   },
   {
     id: "skills",
@@ -57,6 +63,8 @@ const TABS = [
     description:
       "Skilled across the full design spectrum — from mobile apps and web interfaces to brand identities and motion graphics, always putting the user first.",
     items: skills,
+    image: skillsIllustration,
+    alt: "Designer with creative tools",
   },
 ];
 
@@ -97,10 +105,10 @@ const EducationExperience = () => {
           {/* Card Body */}
           <div className="card-body">
             {/* Left — Illustration */}
-            <div className="illus-wrap">
+            <div className="illus-wrap" key={`img-${activeTab}`}>
               <Image
-                src={designerIllustration}
-                alt="Designer at work"
+                src={current.image}
+                alt={current.alt}
                 width={420}
                 height={420}
                 className="illus-img"
@@ -213,19 +221,26 @@ const EducationExperience = () => {
         /* ── Illustration ── */
         .illus-wrap {
           display: flex;
-          align-items: flex-end;
+          align-items: center;
           justify-content: center;
-          padding: 32px 24px 0;
+          padding: 24px;
           border-right: 1px solid rgba(168,85,247,0.2);
           background: rgba(168,85,247,0.03);
+          overflow: hidden;
         }
 
         .illus-img {
           object-fit: contain;
           width: 100% !important;
-          height: auto !important;
-          max-height: 380px;
+          height: 100% !important;
+          max-height: 400px;
           filter: drop-shadow(0 0 24px rgba(124,58,237,0.2));
+          animation: fadeInImg 0.4s ease both;
+        }
+
+        @keyframes fadeInImg {
+          from { opacity: 0; transform: scale(0.95); }
+          to   { opacity: 1; transform: scale(1); }
         }
 
         /* ── Content ── */
@@ -313,16 +328,16 @@ const EducationExperience = () => {
           .illus-wrap {
             border-right: none;
             border-bottom: 1px solid rgba(168,85,247,0.2);
-            padding: 16px 16px 0;
+            padding: 16px;
             max-height: 280px;
-            overflow: visible;
+            overflow: hidden;
             justify-content: center;
           }
           .illus-img {
             max-height: 260px;
             width: auto !important;
             object-fit: contain;
-            object-position: center bottom;
+            object-position: center center;
           }
           .content-wrap {
             padding: 28px 24px;
