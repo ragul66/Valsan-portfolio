@@ -27,6 +27,8 @@ import jove3 from "../../../public/jove/jove3.png";
 
 import uday1 from "../../../public/uday/uday1.png";
 
+import expresshome from "../../../public/Express-Kitchen/express-home.png"
+
 
 
 
@@ -76,14 +78,12 @@ const projects = [
       { src: uday1, link: "https://www.drudayravi.com/" },
     ]
   },
-  // {
-  //   id: "06", title: "Design Recreation", category: "App Design", bgColor: "#10b981", textColor: "#fff",
-  //   slides: [
-  //     { src: designimage6, link: "https://dribbble.com/shots/23836574-Recreating-the-Design-from-another-Application" },
-  //     { src: designimage6, link: "#" },
-  //     { src: designimage6, link: "#" },
-  //   ]
-  // },
+  {
+    id: "06", title: "ExpressKitchens", category: "App Design", bgColor: "#f20819", textColor: "#fff",
+    slides: [
+      { src: expresshome, link: "https://expresskitchens.com/shop-assembled-cabinets-lp/" },
+    ]
+  },
 ];
 
 // Magnetic View Button
