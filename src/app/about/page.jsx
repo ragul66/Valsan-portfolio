@@ -4,7 +4,7 @@ import Image from "next/image";
 import aboutSvg from "../../../public/about-top-image.svg";
 
 const BIO =
-  "I'm A Visual Designer Passionate About Crafting Clean And Intuitive Digital Experiences. I've Worked On Website Designs And Social Media Visuals For Brands Like Amazon Associates And Designed A Mobile App For A Fintech Company. I Specialize In UI/UX For Web Apps And Work With Figma, Photoshop, InDesign, And Motion Tools Like After Effects. Some Of My Proudest Projects Include A Doctor's Website And Multi-Page Layouts For Various Companies.";
+  "I’m a Visual Designer at Identiti focused on creating clean, conversion-driven digital experiences for modern brands. Over the past 1+ years, I’ve worked on SaaS landing pages, ad creatives, and social media visuals across D2C, performance marketing, and programmatic advertising campaigns, including projects related to Amazon Associates and Amazon Influencer brands.My approach combines strong visual aesthetics with user-first thinking, helping brands communicate clearly while maintaining a premium and engaging digital presence. I specialize in designing high-converting landing pages, modern marketing visuals, and intuitive web experiences that balance creativity with functionality.I primarily work with tools like Figma, Adobe Photoshop, Adobe Illustrator, and Adobe XD to craft polished, visually consistent designs with clean structure, smooth interactions, and a strong focus on brand presentation.Currently, I’m looking for opportunities where I can contribute to ambitious teams, grow as a designer, and create impactful digital experiences that combine modern aesthetics with strategic design thinking.";
 
 const WORDS = BIO.split(" ");
 
