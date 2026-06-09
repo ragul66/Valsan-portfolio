@@ -4,7 +4,7 @@ import Image from "next/image";
 import aboutSvg from "../../../public/about-top-image.svg";
 
 const BIO =
-  "I’m a Visual Designer at Identiti focused on creating clean, conversion-driven digital experiences for modern brands. Over the past 1+ years, I’ve worked on SaaS landing pages, ad creatives, and social media visuals across D2C, performance marketing, and programmatic advertising campaigns, including projects related to Amazon Associates and Amazon Influencer brands.My approach combines strong visual aesthetics with user-first thinking, helping brands communicate clearly while maintaining a premium and engaging digital presence. I specialize in designing high-converting landing pages, modern marketing visuals, and intuitive web experiences that balance creativity with functionality.I primarily work with tools like Figma, Adobe Photoshop, Adobe Illustrator, and Adobe XD to craft polished, visually consistent designs with clean structure, smooth interactions, and a strong focus on brand presentation.Currently, I’m looking for opportunities where I can contribute to ambitious teams, grow as a designer, and create impactful digital experiences that combine modern aesthetics with strategic design thinking.";
+  "I’m a Visual Designer at Identiti focused on creating clean, conversion-driven digital experiences for modern brands. Over the past 1+ years, I’ve worked on SaaS landing pages, ad creatives, and social media visuals across D2C, performance marketing, and programmatic advertising campaigns, including projects related to Amazon Associates and Amazon Influencer brands. My approach combines strong visual aesthetics with user-first thinking, helping brands communicate clearly while maintaining a premium and engaging digital presence. I specialize in designing high-converting landing pages, modern marketing visuals, and intuitive web experiences that balance creativity with functionality. I primarily work with tools like Figma, Adobe Photoshop, Adobe Illustrator, and Adobe XD to craft polished, visually consistent designs with clean structure, smooth interactions, and a strong focus on brand presentation. Currently, I’m looking for opportunities where I can contribute to ambitious teams, grow as a designer, and create impactful digital experiences that combine modern aesthetics with strategic design thinking.";
 
 const WORDS = BIO.split(" ");
 
@@ -155,7 +155,6 @@ export default function AboutSection() {
           font-weight: 600;
           line-height: 1.85;
           letter-spacing: 0.3px;
-          text-transform: capitalize;
         }
         .bio-word {
           color: rgba(255,255,255,0.15);

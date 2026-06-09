@@ -146,7 +146,7 @@ const Header = () => {
           <div className="hero-bio">
             <p>
               A passionate UI/UX Designer crafting intuitive digital experiences
-              and visual stories. Dedicated to building user-centric, pixel-perfect designs for modern brands.
+              and visual stories. Dedicated to building user-centric, pixel-perfect designs for various brands.
             </p>
           </div>
 
@@ -189,16 +189,16 @@ const Header = () => {
       {/* ── Profile Image (absolute, right side) ── */}
       <div className="hero-image-wrap">
         <motion.div style={{ y: imageY, width: "100%", height: "100%" }}>
-        <div className="hero-image-inner transition-transform duration-500 hover:scale-105">
-          <Image
-            src={image}
-            alt="SreeValsan Ravikumar - Creative Visual Designer"
-            width={600}
-            height={800}
-            className="hero-image animate-fadein"
-            priority
-          />
-        </div>
+          <div className="hero-image-inner transition-transform duration-500 hover:scale-105">
+            <Image
+              src={image}
+              alt="SreeValsan Ravikumar - Creative Visual Designer"
+              width={600}
+              height={800}
+              className="hero-image animate-fadein"
+              priority
+            />
+          </div>
         </motion.div>
       </div>
 

@@ -48,8 +48,8 @@ const TABS = [
   },
   {
     id: "education",
-    label: "My Educations",
-    heading: "My Educations",
+    label: "My Education",
+    heading: "My Education",
     description:
       "Earned a Bachelor's degree in Computer Science & Business Systems, building a strong foundation in technology, design thinking, and digital product development.",
     items: education,
