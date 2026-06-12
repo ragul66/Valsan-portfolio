@@ -44,7 +44,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/sreevalsanravikumar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-btn"
+                className="social-btn linkedin-btn"
               >
                 LinkedIn
               </a>
@@ -52,7 +52,7 @@ const Footer = () => {
                 href="https://dribbble.com/SreeValsan_Ravi/shots"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-btn"
+                className="social-btn dribbble-btn"
               >
                 Dribbble
               </a>
@@ -62,7 +62,7 @@ const Footer = () => {
                 href="https://www.instagram.com/sree_valsan___/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-btn"
+                className="social-btn instagram-btn"
               >
                 Instagram
               </a>
@@ -162,22 +162,47 @@ const Footer = () => {
           align-items: center;
           justify-content: center;
           padding: 14px 36px;
-          border: 1.5px solid rgba(245,240,255,0.55);
           border-radius: 6px;
           font-size: 14px;
           font-weight: 700;
-          color: #f5f0ff;
           letter-spacing: 0.5px;
           text-decoration: none;
           background: transparent;
-          transition: background 0.25s, border-color 0.25s, color 0.25s;
+          transition: background 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s;
           white-space: nowrap;
         }
 
-        .social-btn:hover {
-          background: #a855f7;
-          border-color: #a855f7;
+        .social-btn.linkedin-btn {
+          border: 1.5px solid #0077B5;
+          color: #0077B5;
+        }
+        .social-btn.linkedin-btn:hover {
+          background: #0077B5;
+          border-color: #0077B5;
           color: #fff;
+          box-shadow: 0 0 20px rgba(0, 119, 181, 0.55);
+        }
+
+        .social-btn.dribbble-btn {
+          border: 1.5px solid #EA4C89;
+          color: #EA4C89;
+        }
+        .social-btn.dribbble-btn:hover {
+          background: #EA4C89;
+          border-color: #EA4C89;
+          color: #fff;
+          box-shadow: 0 0 20px rgba(234, 76, 137, 0.55);
+        }
+
+        .social-btn.instagram-btn {
+          border: 1.5px solid #FF0069;
+          color: #FF0069;
+        }
+        .social-btn.instagram-btn:hover {
+          background: #FF0069;
+          border-color: #FF0069;
+          color: #fff;
+          box-shadow: 0 0 20px rgba(255, 0, 105, 0.55);
         }
 
         /* ── Divider ── */

@@ -368,8 +368,9 @@ const RecentWorks = () => {
           position: relative;
           border-radius: 10px;
           overflow: hidden;
-          align-self: stretch;
-          min-height: 400px;
+          align-self: center;
+          width: 100%;
+          aspect-ratio: 1.6;
           box-shadow: 0 25px 60px rgba(0,0,0,0.6);
           z-index: 2;
         }
@@ -378,8 +379,8 @@ const RecentWorks = () => {
           height: clamp(520px, 82vh, 880px);
         }
         .project-image {
-          object-fit: cover !important;
-          object-position: top !important;
+          object-fit: contain !important;
+          object-position: center !important;
         }
 
         @media (max-width: 1024px) {
